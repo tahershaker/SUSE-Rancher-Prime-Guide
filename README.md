@@ -1,4 +1,4 @@
-# SUSE Rancher DevSecOps Install Configure
+# SUSE Rancher DevSecOps Install & Configure
 
 This repo is created to provide the reader all the required information on installing and configuring `SUSE Rancher` DevSecOps solution portfolio for demo, proof-of-concept, testing, and education purposes. The products included in this repo are - but not limited to - `SUSE Rancher RKE2`, `SUSE Rancher K3S`, `SUSE Rancher`, `SUSE Longhorn`, and `SUSE NeuVector`. This repo provide a high-level explanation along with install and configure step-by-step guides and scripts.
 
@@ -44,17 +44,17 @@ This repo concentrates on `SUSE Rancher` DevSecOps solution portfolio which incl
 This repo will provide high-level explanation, step-by-step-guides, and scripts for the installation and configuration of the `SUSE Rancher` DevSecOps solution portfolio. Thus the resources available in this repo are as follows:
 
 - Install - _provides solution installation guides and scripts_
-  - [RKE2](/Install/RKE2/)
-  - [K3S](/Install/K3S/)
-  - [Rancher](/Install/Rancher/)
-  - [Longhorn](/Install/Longhorn/)
-  - [NeuVector](/Install/NeuVector/)
+  - [RKE2](/1-Install/RKE2/)
+  - [K3S](/1-Install/K3S/)
+  - [Rancher](/1-Install/Rancher/)
+  - [Longhorn](/1-Install/Longhorn/)
+  - [NeuVector](/1-Install/NeuVector/)
 - Configure _provides solution configuration guides and scripts_
-  - [RKE2](/Configure/RKE2/)
-  - [K3S](/Configure/K3S/)
-  - [Rancher](/Configure/Rancher/)
-  - [Longhorn](/Configure/Longhorn/)
-  - [NeuVector](/Configure/NeuVector/)
+  - [RKE2](/2-Configure/RKE2/)
+  - [K3S](/2-Configure/K3S/)
+  - [Rancher](/2-Configure/Rancher/)
+  - [Longhorn](/2-Configure/Longhorn/)
+  - [NeuVector](/2-Configure/NeuVector/)
 
 ---
 
