@@ -184,6 +184,11 @@ cni: "calico"
 token: “Suse!sTh3BestSince@1992”
 EOF
 ```
+
+<p align="center">
+    <img src="Images/step-3.png">
+</p>
+
 4. Create the configuration file on worker node(s) - Here the master node IP is 10.10.10.130
 ```bash
 sudo mkdir -p /etc/rancher/rke2/
