@@ -184,11 +184,11 @@ cni: "calico"
 token: “Suse!sTh3BestSince@1992”
 EOF
 ```
-8. Create the configuration file on worker node(s)
+8. Create the configuration file on worker node(s) - Here the master node IP is 10.10.10.140
 ```bash
 sudo mkdir -p /etc/rancher/rke2/
 sudo cat << EOF >> /etc/rancher/rke2/config.yaml
-server: https://10.10.10.10:9345
+server: https://10.10.10.140:9345
 token: “Suse!sTh3BestSince@1992”
 EOF
 ```
