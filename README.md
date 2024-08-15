@@ -5,7 +5,7 @@ This repo is created to provide the reader all the required information on insta
 ---
 
 <p align="center">
-    <img src="Images/IntroPic.png">
+    <img src="Images/SUSE-Logo.png">
 </p>
 
 ---
@@ -55,6 +55,12 @@ This repo will provide high-level explanation, step-by-step-guides, and scripts 
   - [Rancher](/2-Configure/Rancher/)
   - [Longhorn](/2-Configure/Longhorn/)
   - [NeuVector](/2-Configure/NeuVector/)
+- Troubleshoot _provides solution installation and configuration troubleshooting guides and scripts_
+  - [RKE2](/3-Troubleshoot/RKE2/)
+  - [K3S](/3-Troubleshoot/K3S/)
+  - [Rancher](/3-Troubleshoot/Rancher/)
+  - [Longhorn](/3-Troubleshoot/Longhorn/)
+  - [NeuVector](/3-Troubleshoot/NeuVector/)
 
 ---
 
