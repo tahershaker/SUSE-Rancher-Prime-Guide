@@ -166,19 +166,44 @@ curl -OLs https://github.com/rancher/rke2/releases/download/$RKE2_VERSION/rke2.l
 curl -OLs https://github.com/rancher/rke2/releases/download/$RKE2_VERSION/sha256sum-amd64.txt
 curl -sfL https://get.rke2.io --output install.sh
 ```
+
+<p align="center">
+    <img src="Images/step-2.png">
+</p>
+
 3. Download the kubectl tool to the same folder
 ```bash
 sudo curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 ```
+
+<p align="center">
+    <img src="Images/step-3.png">
+</p>
+
 4. Download the Helm tool to the same folder
 ```bash
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 ```
-5. create a folder called `rke2-artifacts` and copy the downloaded files to all nodes in the cluster (master & worker). In this example we are using scp to copy the files from the JumpBpx to the Nodes
+
+<p align="center">
+    <img src="Images/step-4.png">
+</p>
+
+5. create a folder called `rke2-artifacts` and copy the downloaded files to all nodes in the cluster (master & worker). In this example we are using scp to copy the files from the JumpBpx to the Nodes and all machines are hosted on Google Cloud. Thus using Google Cloud SSH Key in the scp command
 ```bash
-scp * root@<node-ip-address>:/root/rke2-artifacts
+sudo scp -i google_compute_engine rke2-artifacts/* root@34.76.81.211:/rke2-artifacts/
 ```
-6. SSH to all nodes
+
+<p align="center">
+    <img src="Images/step-5.png">
+</p>
+
+6. SSH to all nodes and ensure that the files are transferred properly
+
+<p align="center">
+    <img src="Images/step-6.png">
+</p>
+
 7. Create the Configuration file on master node
 ```bash
 sudo mkdir -p /etc/rancher/rke2/
@@ -188,6 +213,11 @@ cni: "calico"
 token: “Suse!sTh3BestSince@1992”
 EOF
 ```
+
+<p align="center">
+    <img src="Images/step-7.png">
+</p>
+
 8. Create the configuration file on worker node(s) - Here the master node IP is 10.10.10.140
 ```bash
 sudo mkdir -p /etc/rancher/rke2/
@@ -196,10 +226,15 @@ server: https://10.10.10.140:9345
 token: “Suse!sTh3BestSince@1992”
 EOF
 ```
+
+<p align="center">
+    <img src="Images/step-8.png">
+</p>
+
 9. Install RKE2 on master node using the downloaded. The files we downloaded for this example is RKE2 version 1.28.11. Here we are using the `INSTALL_RKE2_ARTIFACT_PATH` variable to instruct the script to retrieve all required files from the specified path.
 ```bash
-cd /root/rke2-artifacts
-sudo ./install.sh | INSTALL_RKE2_ARTIFACT_PATH=/root/rke2-artifacts sh -
+cd rke2-artifacts
+sudo ./install.sh | INSTALL_RKE2_ARTIFACT_PATH=/rke2-artifacts sh -
 ```
 10. Enable and start the RKE2 server services on master node
 ```bash
@@ -208,8 +243,8 @@ sudo systemctl start rke2-server.service
 ```
 11. Install RKE2 on master node using the downloaded. The files we downloaded for this example is RKE2 version 1.28.11. Here we are using the `INSTALL_RKE2_ARTIFACT_PATH` variable to instruct the script to retrieve all required files from the specified path. Also the `INSTALL_RKE2_TYPE` variable is used and is set to `agent` to let the script know that this installation is for an worker node.
 ```bash
-cd /root/rke2-artifacts
-sudo ./install.sh | INSTALL_RKE2_ARTIFACT_PATH=/root/rke2-artifacts INSTALL_RKE2_TYPE="agent" sh -
+cd rke2-artifacts
+sudo ./install.sh | INSTALL_RKE2_ARTIFACT_PATH=/rke2-artifacts INSTALL_RKE2_TYPE="agent" sh -
 ```
 12. Enable and start the RKE2 agent services on worker node
 ```bash
