@@ -143,8 +143,6 @@ token: “Suse!sTh3BestSince@1992”
 EOF
 ```
 
-==================
-
 The main required configurations for the RKE2 server (meaning the master node) are: 
 - `server` - RKE2 server IP or FQDN for the Worker node to use for joining the cluster. Port has to be 9345 - example 10.10.10.10 - master-01.example.com
 - `token` - Token used for authentication between the worker and master nodes. This can be any random characters - example: Suse!sTh3BestSince@1992
