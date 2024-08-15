@@ -231,26 +231,60 @@ EOF
     <img src="Images/step-8.png">
 </p>
 
-9. Install RKE2 on master node using the downloaded. The files we downloaded for this example is RKE2 version 1.28.11. Here we are using the `INSTALL_RKE2_ARTIFACT_PATH` variable to instruct the script to retrieve all required files from the specified path.
+9. Install RKE2 on master node using the downloaded. The files we downloaded for this example is RKE2 version 1.28.11. Here we are using the `INSTALL_RKE2_ARTIFACT_PATH` variable to instruct the script to retrieve all required files from the specified path. Please note: the `INSTALL_RKE2_ARTIFACT_PATH` variable has to be defined before the execution of the script
 ```bash
 cd rke2-artifacts
-sudo ./install.sh | INSTALL_RKE2_ARTIFACT_PATH=/rke2-artifacts sh -
+chmod +x install.sh # Make Script Executable
+sudo INSTALL_RKE2_ARTIFACT_PATH=/rke2-artifacts sh install.sh
 ```
+
+<p align="center">
+    <img src="Images/step-9.png">
+</p>
+
 10. Enable and start the RKE2 server services on master node
 ```bash
 sudo systemctl enable rke2-server.service
 sudo systemctl start rke2-server.service
 ```
-11. Install RKE2 on master node using the downloaded. The files we downloaded for this example is RKE2 version 1.28.11. Here we are using the `INSTALL_RKE2_ARTIFACT_PATH` variable to instruct the script to retrieve all required files from the specified path. Also the `INSTALL_RKE2_TYPE` variable is used and is set to `agent` to let the script know that this installation is for an worker node.
+
+<p align="center">
+    <img src="Images/step-10.png">
+</p>
+
+You can check the statue of the service using the command `sudo systemctl status rke2-server.service`
+
+<p align="center">
+    <img src="Images/step-10-confirm.png">
+</p>
+
+11. Install RKE2 on master node using the downloaded. The files we downloaded for this example is RKE2 version 1.28.11. Here we are using the `INSTALL_RKE2_ARTIFACT_PATH` variable to instruct the script to retrieve all required files from the specified path. Also the `INSTALL_RKE2_TYPE` variable is used and is set to `agent` to let the script know that this installation is for an worker node. Please note: the `INSTALL_RKE2_ARTIFACT_PATH` variable has to be defined before the execution of the script
 ```bash
 cd rke2-artifacts
-sudo ./install.sh | INSTALL_RKE2_ARTIFACT_PATH=/rke2-artifacts INSTALL_RKE2_TYPE="agent" sh -
+chmod +x install.sh # Make Script Executable
+sudo INSTALL_RKE2_ARTIFACT_PATH=/rke2-artifacts INSTALL_RKE2_TYPE="agent" sh install.sh
 ```
+
+<p align="center">
+    <img src="Images/step-11.png">
+</p>
+
 12. Enable and start the RKE2 agent services on worker node
 ```bash
 sudo systemctl enable rke2-agent.service
 sudo systemctl start rke2-agent.service
 ```
+
+<p align="center">
+    <img src="Images/step-12.png">
+</p>
+
+You can check the statue of the service using the command `sudo systemctl status rke2-server.service`
+
+<p align="center">
+    <img src="Images/step-12-confirm.png">
+</p>
+
 13. Install and configure kubectl on master node (Using the file you have download and copied to the master nodes in step 5)
 ```bash
 cd /root/rke2-artifacts
