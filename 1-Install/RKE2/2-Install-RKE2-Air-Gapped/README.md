@@ -110,6 +110,8 @@ For RKE2 versions 1.21 and higher, if the host kernel supports AppArmor, the App
 
 ### Create RKE2 Configuration File
 
+---
+
 The primary way to configure RKE2 is through its config file. Command line arguments and environment variables are also available, but RKE2 is installed as a systemd service and thus these are not as easy to leverage. By default, RKE2 will launch with the values present in the YAML file located at `/etc/rancher/rke2/config.yaml`.
 
 The RKE2 config file needs to be created manually. You can do that by running `vi /etc/rancher/rke2/config.yaml` as a privileged user and then add the required configuration. If the configuration is changed after starting RKE2, the service must be restarted to apply the new configuration.
@@ -147,6 +149,8 @@ For the list of all supported configuration, please refer to this [link](https:/
 ---
 
 ### Installing RKE2 Kubernetes Cluster
+
+---
 
 In this guide, we will be deploying an RKE2 cluster with one master node and two worker nodes. For a high-available RKE2 cluster, please refer to [this link](https://docs.rke2.io/install/ha)
 
