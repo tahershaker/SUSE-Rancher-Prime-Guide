@@ -85,6 +85,7 @@ NetworkManager manipulates the routing table for interfaces in the default netwo
 In order to do this, create a configuration file called rke2-canal.conf in /etc/NetworkManager/conf.d with the contents provided below and reload the service:
 
 ```bash
+mkdir -p /etc/NetworkManager/conf.d
 sudo cat << EOF >> /etc/NetworkManager/conf.d/rke2-canal.conf
 [keyfile]
 unmanaged-devices=interface-name:cali*;interface-name:flannel*
