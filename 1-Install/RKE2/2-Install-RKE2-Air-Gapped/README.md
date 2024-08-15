@@ -34,19 +34,19 @@ This section is a ste-by-step guide for installing the `SUSE Rancher RKE2` using
 
 Before installing RKE2, you must confirm that all requirements are in place to avoid any issues during or after the installation.
 
-**Ensure Using A Supported OS**
+> Ensure Using A Supported OS
 
 Check if you are using a supported Operating System distribution and version. Please refer to the RKE2 support matrix - [Link Here](https://www.suse.com/suse-rke2/support-matrix/all-supported-versions/rke2-v1-30/)
 
-**Ensure Sufficient Hardware Resources**
+> Ensure Sufficient Hardware Resources
 
 Make sure you have enough Hardware - CPU, Memory, Disk - on your servers before the installation. Please refer to the Hardware requirement - [Link Here](https://docs.rke2.io/install/requirements#hardware)
 
-**Ensure Require Network Ports Are Opened On Firewall (If Any Exists) For Node To Node Communication**
+> Ensure Require Network Ports Are Opened On Firewall (If Any Exists) For Node To Node Communication
 
 If there are any Firewall services impacting the communication between the nodes you will use to deploy RKE2 on, make sure you allow the required ports. Please refer to the required ports list - [Link Here](https://docs.rke2.io/install/requirements#networking)
 
-**Ensure Unique Hostname On All Nodes**
+> Ensure Unique Hostname On All Nodes 
 
 Two rke2 nodes cannot have the same node name. By default, the node name is taken from the machine's hostname. If two or more of your machines have the same hostname, you must do one of the following:
 - Update the hostname to a unique value (*Recommended*)
@@ -54,7 +54,7 @@ Two rke2 nodes cannot have the same node name. By default, the node name is take
 - Set the `with-node-id` parameter in the config file to true to append a randomly generated ID number to the hostname.
   - Please Note: Configuration file will be explained later in this section, please go through all the guide to be able to understand how to you the config file
 
-**Ensure Having A Default Route Configured**
+> Ensure Having A Default Route Configured
 
 If your nodes do not have an interface with a default route, a default route must be configured; even a black-hole route via a dummy interface will suffice. RKE2 requires a default route in order to auto-detect the node's primary IP, and for kube-proxy ClusterIP routing to function properly. 
 
@@ -67,7 +67,7 @@ ip addr add 203.0.113.254/31 dev dummy0
 ip route add default via 203.0.113.255 dev dummy0 metric 1000
 ```
 
-**Disable Firewalld Services**
+> Disable Firewalld Services
 
 Firewalld conflicts with RKE2's default Canal (Calico + Flannel) networking stack. To avoid unexpected behavior, firewalld should be disabled on systems running RKE2. to do so, please use the following command:
 
@@ -76,7 +76,7 @@ sudo systemctl stop firewalld
 sudo systemctl disable firewalld
 ```
 
-**Configure NetworkManager to ignore calico/flannel related network interfaces**
+> Configure NetworkManager to ignore calico/flannel related network interfaces
 
 NetworkManager manipulates the routing table for interfaces in the default network namespace where many CNIs, including RKE2's default, create veth pairs for connections to containers. This can interfere with the CNI’s ability to route correctly. As such, if installing RKE2 on a NetworkManager enabled system, it is highly recommended to configure NetworkManager to ignore calico/flannel related network interfaces. 
 
@@ -91,7 +91,7 @@ EOF
 sudo systemctl reload NetworkManager
 ```
 
-**Disable Some NetworkManager Services (If Required)**
+> Disable Some NetworkManager Services (If Required)
 
 In some operating systems like RHEL 8.4, NetworkManager includes two extra services called `nm-cloud-setup.service` and `nm-cloud-setup.timer`. These services add a routing table that interfere with the CNI plugin's configuration. Unfortunately, there is no config that can avoid that. Therefore, if those services exist, they should be disabled. Please note: the node may require a reboot after disabling these services.
 
@@ -102,7 +102,7 @@ sudo systemctl stop nm-cloud-setup.timer
 sudo systemctl disable nm-cloud-setup.timer
 ```
 
-**Ensure AppArmor is enabled (If Required)**
+> Ensure AppArmor is enabled (If Required)
 
 For RKE2 versions 1.21 and higher, if the host kernel supports AppArmor, the AppArmor tools (usually available via the `apparmor-parser` package) must also be present prior to installing RKE2.
 
