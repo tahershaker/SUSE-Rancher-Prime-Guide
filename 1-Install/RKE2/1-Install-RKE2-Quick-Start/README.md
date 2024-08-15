@@ -290,12 +290,6 @@ curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 
 ---
 
-## Script
-
-The Quick-Start Guide officially provided by `SUSE Rancher RKE2` is already a script, thus, this repo do not provide any scripts for this objective.
-
----
-
 ## References
 
 - [RKE2 Quick-Start](https://docs.rke2.io/install/quickstart)

@@ -180,9 +180,10 @@ sudo curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/
     <img src="Images/step-3.png">
 </p>
 
-4. Download the Helm tool to the same folder
+4. Download the Helm binary tool to the same folder and unzip the tar file. Please note, this link is download the latest Helm version at the time.
 ```bash
-curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+sudo wget https://get.helm.sh/helm-v3.15.4-linux-amd64.tar.gz
+sudo tar -zxvf helm-v3.15.4-linux-amd64.tar.gz
 ```
 
 <p align="center">
@@ -287,7 +288,7 @@ You can check the statue of the service using the command `sudo systemctl status
 
 13. Install and configure kubectl on master node (Using the file you have download and copied to the master nodes in step 5)
 ```bash
-cd /root/rke2-artifacts
+cd /rke2-artifacts
 # install kubectl
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 # bring the kubecofig file created by RKE2 and add it to the proper location
@@ -296,23 +297,30 @@ cp /etc/rancher/rke2/rke2.yaml ~/.kube/config
 # assign required privilege to the file
 chown $(whoami):$(whoami) ~/.kube/config
 ```
+
+<p align="center">
+    <img src="Images/step-13.png">
+</p>
+
 14. Ensure cluster is working as expected using the kubectl command below. Check the nodes are ready and Pods are running
 ```bash
 kubectl get nodes
 kubectl get pod -A
 ```
 
-15. Install Helm on the master node (Using the file you have download and copied to the master nodes in step 5)
+<p align="center">
+    <img src="Images/step-14.png">
+</p>
+
+15. Install Helm on the master node (Using the file you have download and copied to the master nodes in step 5). In this step we have already downloaded the binary file. You just need to move it on the master node to the `/usr/local/bin/helm`
 ```bash
-sudo chmod 700 get_helm.sh
-sudo ./get_helm.sh
+sudo cd rke2-artifacts/
+sudo mv linux-amd64/helm /usr/local/bin/helm
 ```
 
----
-
-## Script
-
-The Quick-Start Guide officially provided by `SUSE Rancher RKE2` is already a script, thus, this repo do not provide any scripts for this objective.
+<p align="center">
+    <img src="Images/step-15.png">
+</p>
 
 ---
 
