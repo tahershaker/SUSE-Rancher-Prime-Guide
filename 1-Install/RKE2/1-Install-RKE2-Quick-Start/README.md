@@ -197,24 +197,61 @@ server: https://10.10.10.130:9345
 token: “Suse!sTh3BestSince@1992”
 EOF
 ```
+
+<p align="center">
+    <img src="Images/step-4.png">
+</p>
+
 5. Install RKE2 on master node using the Quick-Start script. Here the `INSTALL_RKE2_VERSION` variable is used to determine which version to be installed. In this example we are installing RKE2 version 1.28.11
 ```bash
 sudo curl -sfL https://get.rke2.io | INSTALL_RKE2_VERSION="v1.28.11%2Brke2r1" sh -
 ```
+
+<p align="center">
+    <img src="Images/step-5.png">
+</p>
+
 6. Enable and start the RKE2 server services on master node
 ```bash
 sudo systemctl enable rke2-server.service
 sudo systemctl start rke2-server.service
 ```
+
+<p align="center">
+    <img src="Images/step-6.png">
+</p>
+
+You can confirm the services is running using the output of the command `sudo systemctl status rke2-server.service`
+
+<p align="center">
+    <img src="Images/step-6-confirm.png">
+</p>
+
 7. Install RKE2 on worker nodes using the Quick-Start script. Here the `INSTALL_RKE2_VERSION` variable is used to determine which version to be installed. In this example we are installing RKE2 version 1.28.11. Also the `INSTALL_RKE2_TYPE` variable is used and is set to `agent` to let the script know that this installation is for an worker node.
 ```bash
 sudo curl -sfL https://get.rke2.io | INSTALL_RKE2_VERSION="v1.28.11%2Brke2r1" INSTALL_RKE2_TYPE="agent" sh -
 ```
+
+<p align="center">
+    <img src="Images/step-7.png">
+</p>
+
 8. Enable and start the RKE2 agent services on worker node
 ```bash
 sudo systemctl enable rke2-agent.service
 sudo systemctl start rke2-agent.service
 ```
+
+<p align="center">
+    <img src="Images/step-8.png">
+</p>
+
+You can confirm the services is running using the output of the command `sudo systemctl status rke2-agent.service`
+
+<p align="center">
+    <img src="Images/step-8-confirm.png">
+</p>
+
 9. Install and configure kubectl on master node
 ```bash
 # download kubectl 
@@ -227,16 +264,29 @@ cp /etc/rancher/rke2/rke2.yaml ~/.kube/config
 # assign required privilege to the file
 chown $(whoami):$(whoami) ~/.kube/config
 ```
+
+<p align="center">
+    <img src="Images/step-9.png">
+</p>
+
 10. Ensure cluster is working as expected using the kubectl command below. Check the nodes are ready and Pods are running
 ```bash
 kubectl get nodes
 kubectl get pod -A
 ```
 
+<p align="center">
+    <img src="Images/step-10.png">
+</p>
+
 11. Install Helm on Master node
 ```bash
 curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 ```
+
+<p align="center">
+    <img src="Images/step-11.png">
+</p>
 
 ---
 
