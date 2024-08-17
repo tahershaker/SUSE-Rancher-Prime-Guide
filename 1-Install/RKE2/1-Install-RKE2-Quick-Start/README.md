@@ -112,7 +112,7 @@ Add the necessary HTTP_PROXY, HTTPS_PROXY and NO_PROXY variables to the environm
 - /etc/default/rke2-server
 - /etc/default/rke2-agent
 
-RKE2 will automatically add the cluster internal Pod and Service IP ranges and cluster DNS domain to the list of NO_PROXY entries. You should ensure that the IP address ranges used by the Kubernetes nodes themselves (i.e. the public and private IPs of the nodes) are included in the NO_PROXY list, or that the nodes can be reached through the proxy.
+RKE2 will automatically add the cluster internal Pod and Service IP ranges and cluster DNS domain to the list of NO_PROXY entries. You should ensure that the IP address ranges used by the Kubernetes nodes themselves (i.e. the public and private IPs of the nodes) are included in the NO_PROXY list, or that the nodes can be reached through the proxy. **Please Note:** NO_PROXY has to be uppercase.
 ```bash
 HTTP_PROXY=http://your-proxy.example.com:8888
 HTTPS_PROXY=http://your-proxy.example.com:8888

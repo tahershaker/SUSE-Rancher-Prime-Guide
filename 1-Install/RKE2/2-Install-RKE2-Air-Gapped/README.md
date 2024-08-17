@@ -32,6 +32,8 @@ This section is a ste-by-step guide for installing the `SUSE Rancher RKE2` using
 
 ### Prerequisites For Installing RKE2
 
+---
+
 Before installing RKE2, you must confirm that all requirements are in place to avoid any issues during or after the installation.
 
 > Ensure Using A Supported OS
@@ -148,7 +150,7 @@ For the list of all supported configuration, please refer to this [link](https:/
 
 ---
 
-### Installing RKE2 Kubernetes Cluster
+### Installing RKE2 Kubernetes Cluster In An Air-Gapped Environment  - Step-By-Step Guide
 
 ---
 
