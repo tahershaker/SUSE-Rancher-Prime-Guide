@@ -5,7 +5,7 @@ This repo is created to provide the reader all the required information on insta
 ---
 
 <p align="center">
-    <img src="Images/RKE2-Logo.png">
+    <img src="Images/Rancher-Logo.png">
 </p>
 
 ---
