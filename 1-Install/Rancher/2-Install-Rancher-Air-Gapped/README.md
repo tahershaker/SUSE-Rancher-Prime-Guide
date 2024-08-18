@@ -270,7 +270,7 @@ wget https://github.com/rancher/rancher/releases/download/v2.8.5/rancher-save-im
 
 8. Save the images to a Tarball using the rancher-save-images.sh script. 
 - Please Note: 
-  - This process may take more than 1 hour to complete depending on the hardware.
+  - This process may take several hours to complete depending on the hardware.
   - The downloaded images may require more than 100GB of storage.
   - The compressed tarball will be 20-40GB in size.
 
@@ -291,13 +291,37 @@ chmod +x rancher-save-images.sh
 ```
 
 <p align="center">
-    <img src="Images/step-8.png">
+    <img src="Images/step-8-1.png">
 </p>
+
+After the script is finished, this will be the output. Please note, this process alone took over 3 hours and the files created is nearly 38GB of size.
+
+<p align="center">
+    <img src="Images/step-8-2.png">
+</p>
+
+9. Login to your local private registry and then use the rancher-load-images.sh scrip to push the images to the image registry
+- Please Note:
+  - This process may take more several hours to complete depending on hardware.
+  - The downloaded images may require more than 100GB of storage on the private registry machine.
+  
+```bash
+# Login to local private registry
+docker login suse-harbor-poc.suse-rancher-demo.com
+# Make Script Executable
+chmod +x rancher-load-images.sh
+# Run Script
+./rancher-load-images.sh -l rancher-images.txt -i rancher-images.tar.gz -r suse-harbor-poc.suse-rancher-demo.com
+```
+
+
+
+
 
 
 6. Save the images to a Tarball using the rancher-save-images.sh script. 
 - Please Note: 
-  - This process may take more than 1 hour to complete depending on the hardware.
+  - This process may take several hours to to complete depending on the hardware.
   - The downloaded images may require more than 100GB of storage.
   - The compressed tarball will be 20-40GB in size.
 
