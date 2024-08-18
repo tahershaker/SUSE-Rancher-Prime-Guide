@@ -105,6 +105,14 @@ To operate properly, `SUSE Rancher` requires a number of ports to be open on `SU
 
 As this deployment is based on the Air-Gapped method (no internet access to the node(s)), we would need to download several files and images to a JumpBox server which have internet access. The JumpBox server could be of any operating system. The JumpBox will require at least 350GB of disk space or more available. The JumpBox must have docker CLI tool (or any other alternatives) installed to be able to communicate, pull and push images to the image registries(s). The JumpBox also required Helm CLI toll to be installed.
 
+JumpBox Requirements:
+- CPU: recommended min of 8 CPU - this is not a must, however, this will speed up the process
+- Memory: recommended min of 32GB RAM - this is not a must, however, this will speed up the process
+- Disk: 500 GB - this is a must, otherwise the JumpBox will not have enough space to store the images and create the required Tarball
+- Tools:
+  - Docker installed and enabled
+  - Helm installed and enabled
+
 > Ensure A Local Image Registry Is In Place With Sufficient Storage Capacity
 
 As this deployment is based on the Air-Gapped method (no internet access to the node(s)), we would need to download several files and images to the JumpBox server (which have internet access). Once this is completed, we will be uploading the images to a local Image Registry. Thus, a local image registry is required. There is no specific Image Registry required, any OCI Image Registry tool will be enough. The local Images Registry will require at least 350GB of disk space or more available.
@@ -150,7 +158,9 @@ You can download these files from the `SUSE Rancher` official GitHub. For the re
 
 > Images
 
-To deploy `SUSE Rancher`, several images is required to be downloaded and pushed to the local images registry. The above-mentioned file and scripts in the files sub-section will help to pull and push the required images. `SUSE Rancher` required Cert-Manager to be deployed to handel the certificate generation of the `SUSE manager` solution. However, the above-mentioned file and script do not include the required images of the Cert-Manager, BUT, the provided script can still help in pulling and pushing the images, you only need to update the rancher-images.txt with the required Cert-Manager images name.
+To deploy `SUSE Rancher`, several images is required to be downloaded and pushed to the local images registry. The above-mentioned file and scripts in the files sub-section will help to pull and push the required images. 
+
+`SUSE Rancher` required Cert-Manager to be deployed to handel the certificate generation of the `SUSE manager` solution. We will also need to download the required images and push it to the local image registry
 
 To do so, we will use the Helm Cli tool to perform this action. Please follow the below steps:
 - fetch the cert-manager helm chart using Helm Cli tool - This can only be done after you have added the jetstack Helm repository and updated it.
@@ -159,73 +169,131 @@ helm fetch jetstack/cert-manager --version <required-version-if-needed>
 ```
 - Get all required images of this Helm chart using Helm template command and export them to the rancher-images.txt
 ```bash
-helm template ./cert-manager-<version>.tgz | awk '$1 ~ /image:/ {print $2}' | sed s/\"//g >> ./rancher-images.txt
+helm template ./cert-manager-<version>.tgz | awk '$1 ~ /image:/ {print $2}' | sed s/\"//g >> ./cert-manager-images.txt
 ```
+
+Once we have the images name, we will use docker to pull and push the images
 
 ---
 
+==========================================================================
+
 ### Install SUSE Rancher In An Air-Gapped Environment - Step-By-Step Guide
+
+==========================================================================
 
 ---
 
 In this guide, we will be deploying an `SUSE Rancher` on a single node RKE2 cluster. For production environment, it is required to deploy `SUSE Rancher os a highly-available cluster with minimum of 3 nods. For a high-available RKE2 cluster, please refer to [this link](https://docs.rke2.io/install/ha)
 
 1. Ensure you have performed and satisfied all prerequisites mentioned [here](#prerequisites-for-installing-suse-rancher)
-2. SSH to the JumpBox (Or use your laptop), create a folder called `rancher-artifacts` and download the required files in it. In this guide we will be deploying `SUSE Rancher` version 2.8.5. To download the required file for this release, please refer to this [link](https://github.com/rancher/rancher/releases/tag/v2.8.5). The files to be downloaded are rancher-images.txt, rancher-load-images.sh, and rancher-save-images.sh.
+2. On your local image registry, create a repository called rancher (repository name must be rancher). In this example i have created my repository on harbor image registry and mad it public to avoid the authentication requirement.
 
 <p align="center">
-    <img src="Images/step-2-1.png">
+    <img src="Images/step-2.png">
 </p>
 
-```bash
-mkdir rancher-artifacts
-cd rancher-artifacts
-wget https://github.com/rancher/rancher/releases/download/v2.8.5/rancher-images.txt
-wget https://github.com/rancher/rancher/releases/download/v2.8.5/rancher-load-images.sh
-wget https://github.com/rancher/rancher/releases/download/v2.8.5/rancher-save-images.sh
-```
-
-<p align="center">
-    <img src="Images/step-2-2.png">
-</p>
-
-ensure you have all required files downloaded properly
-
-<p align="center">
-    <img src="Images/step-2-3.png">
-</p>
-
-3. Retrieve the list of cert-manager images and add them to the rancher-images.txt file. In this example we will be using cert-manager version 1.13.0
+3. SSH to the JumpBox (Or use your laptop) and add the required Helm repositories. Please note, the below command will add the `SUSE Rancher` community edition Helm repository. If you are deploying the `SUSE Rancher Prime`, which is the enterprise edition of `SUSE Rancher`, a different Helm repository URL is require. To get this URL, please refer to your SUSE representative.
 
 ```bash
 helm repo add jetstack https://charts.jetstack.io
+helm repo add rancher https://releases.rancher.com/server-charts/stable
 helm repo update
-helm fetch jetstack/cert-manager --version 1.13.0
-helm template ./cert-manager-v1.13.0.tgz | awk '$1 ~ /image:/ {print $2}' | sed s/\"//g >> ./rancher-images.txt
 ```
 
 <p align="center">
     <img src="Images/step-3.png">
 </p>
 
-4. Sort and unique the images list to remove any overlap between the sources
+4. Create a folder called `rancher-artifacts` then download in it the cert-manager Helm chart using Helm Fetch command, then retrieve all required images of the Helm cart using the helm template command and dump it in to a file called cert-manager-images.txt. With the Helm fetch command, you can specify a specific version, in this example i am using version 1.13.0
 
 ```bash
-sort -u rancher-images.txt -o rancher-images.txt
+mkdir rancher-artifacts
+cd rancher-artifacts/
+helm fetch jetstack/cert-manager --version 1.13.0
+helm template ./cert-manager-v1.13.0.tgz | awk '$1 ~ /image:/ {print $2}' | sed s/\"//g >> ./cert-manager-images.txt
 ```
 
-<p align="center">
-    <img src="Images/step-4.png">
-</p>
-
-5. Ensure that cert-manager images name are added to the rancher-images.txt along with the rest of the `SUSE Rancher` images
+5. Using Docker, pull all the images listed in the cert-manager-images.txt
 ```bash
-cat rancher-images.txt
+cat cert-manager-images.txt
+docker pull quay.io/jetstack/cert-manager-cainjector:v1.13.0
+docker pull quay.io/jetstack/cert-manager-controller:v1.13.0
+docker pull quay.io/jetstack/cert-manager-webhook:v1.13.0
+docker pull quay.io/jetstack/cert-manager-ctl:v1.13.0
 ```
 
 <p align="center">
     <img src="Images/step-5.png">
 </p>
+
+6. Using Docker, Login to your local image registry, tag the pulled images with your local image registry URL and the rancher repository (also remove the first 2 parts of the images URLs), then push them to the local image registry
+
+```bash
+docker login suse-harbor-poc.suse-rancher-demo.com
+docker tag quay.io/jetstack/cert-manager-cainjector:v1.13.0 suse-harbor-poc.suse-rancher-demo.com/rancher/cert-manager-cainjector:v1.13.0
+docker tag quay.io/jetstack/cert-manager-controller:v1.13.0 suse-harbor-poc.suse-rancher-demo.com/rancher/cert-manager-controller:v1.13.0
+docker tag quay.io/jetstack/cert-manager-webhook:v1.13.0 suse-harbor-poc.suse-rancher-demo.com/rancher/cert-manager-webhook:v1.13.0
+docker tag quay.io/jetstack/cert-manager-ctl:v1.13.0 suse-harbor-poc.suse-rancher-demo.com/rancher/cert-manager-ctl:v1.13.0
+docker push suse-harbor-poc.suse-rancher-demo.com/rancher/cert-manager-cainjector:v1.13.0
+docker push suse-harbor-poc.suse-rancher-demo.com/rancher/cert-manager-controller:v1.13.0
+docker push suse-harbor-poc.suse-rancher-demo.com/rancher/cert-manager-webhook:v1.13.0
+docker push suse-harbor-poc.suse-rancher-demo.com/rancher/cert-manager-ctl:v1.13.0
+```
+
+<p align="center">
+    <img src="Images/step-6-1.png">
+</p>
+
+Check that the images was pushed ot the local image registry properly
+
+<p align="center">
+    <img src="Images/step-6-2.png">
+</p>
+
+7. Download all required `SUSE Rancher` files related to the required release. In this guide we will be deploying `SUSE Rancher` version 2.8.5. To download the required file for this release, please refer to this [link](https://github.com/rancher/rancher/releases/tag/v2.8.5). The files to be downloaded are rancher-images.txt, rancher-load-images.sh, and rancher-save-images.sh.
+
+<p align="center">
+    <img src="Images/step-7-1.png">
+</p>
+
+```bash
+cd /rancher-artifacts
+wget https://github.com/rancher/rancher/releases/download/v2.8.5/rancher-images.txt
+wget https://github.com/rancher/rancher/releases/download/v2.8.5/rancher-load-images.sh
+wget https://github.com/rancher/rancher/releases/download/v2.8.5/rancher-save-images.sh
+```
+
+<p align="center">
+    <img src="Images/step-7-2.png">
+</p>
+
+8. Save the images to a Tarball using the rancher-save-images.sh script. 
+- Please Note: 
+  - This process may take more than 1 hour to complete depending on the hardware.
+  - The downloaded images may require more than 100GB of storage.
+  - The compressed tarball will be 20-40GB in size.
+
+```bash
+# Make Script Executable
+chmod +x rancher-save-images.sh
+# Run Script
+./rancher-save-images.sh -l rancher-images.txt -i rancher-images.tar.gz
+```
+
+Please Note: the above commands will download the Rancher Community edition from the public GitHub registry, if you are deploying `SUSE Rancher Prime` which is the enterprise edition, you ned to add to the rancher-save-image.sh command the -s option with the official `SUSE Rancher prime` registry (`./rancher-save-images.sh -l rancher-images.txt -i rancher-images.tar.gz -s <suse-rancher-prime-registry.com>`). to get the official Rancher Prime registry, please reach out to you `SUSE` representative.
+
+```bash
+# Make Script Executable
+chmod +x rancher-save-images.sh
+# Run Script
+./rancher-save-images.sh -l rancher-images.txt -i rancher-images.tar.gz -s <suse-rancher-prime-registry.com>
+```
+
+<p align="center">
+    <img src="Images/step-8.png">
+</p>
+
 
 6. Save the images to a Tarball using the rancher-save-images.sh script. 
 - Please Note: 
@@ -241,31 +309,12 @@ chmod +x rancher-save-images.sh
 ```
 
 <p align="center">
-    <img src="Images/step-6-1.png">
+    <img src="Images/step-6.png">
 </p>
 
-Please Note: the above commands will download the Rancher Community edition from the public GitHub registry, if you are deploying Rancher Prime edition, you ned to add to the rancher-save-image.sh the -s with the official Rancher prime registry. to get the official Rancher Prime registry, please reach out to you SUSE representative. Also, there should be an edit to be done on the script if you are using the `SUSE Rancher Prime` official registry. If you remember, we added cert-manager images which should be downloaded from quay registry (or at the time it is). If you added the -s along with the `SUSE Rancher Prime` official registry, the script will amend this to the image name and it will not be able to download the required images then. To workaround it, we will edit the script so that if the image name include (quay), then it will leave it with no amendment else it will then amend the `SUSE Rancher Prime` official registry
+Please Note: the above commands will download the Rancher Community edition from the public GitHub registry, if you are deploying `SUSE Rancher Prime` which is the enterprise edition, you ned to add to the rancher-save-image.sh the -s with the official `SUSE Rancher prime` registry. to get the official Rancher Prime registry, please reach out to you `SUSE` representative. Also, as you have noticed in step number 3, there was a note to skip this step related to adding the cert-manager images to the rancher-images.txt file. this is because if you added the -s with the official `SUSE Rancher prime` registry, the script will have issues with the cert-manager images. Thus we will be doing it on a later stage without the script.
 
-Edit the rancher-save-images.sh file by adding the below starting from line 57 and then comment out line 62
-```bash
-    if [[ "${i}" == *"quay"* ]]; then
-        i="${i}"
-    else
-        i="${source_registry}${i}"
-    fi
-```
-
-<p align="center">
-    <img src="Images/step-6-2.png">
-</p>
-
-The script should look like this after editing
-
-<p align="center">
-    <img src="Images/step-6-3.png">
-</p>
-
-Now you can run the same command (using the -s and the `SUSE Rancher Prime` official registry) to pull all required images and add them to the tarball
+To use the above commands using the the official `SUSE Rancher prime` registry, use the below commands
 
 ```bash
 # Make Script Executable
@@ -274,8 +323,28 @@ chmod +x rancher-save-images.sh
 ./rancher-save-images.sh -l rancher-images.txt -i rancher-images.tar.gz -s <prime-official-reg.com>
 ```
 
+7. In your local private registry, create a repository to push all images to. In this example, i am using Harbor Image Registry and creating a repository called rancher-arigap and setting it as a public to avoid using authentication. Please note the repository has to be named rancher.
+
 <p align="center">
-    <img src="Images/step-6-4.png">
+    <img src="Images/step-7.png">
+</p>
+
+8. Login to your local private registry and then use the rancher-load-images.sh scrip to push the images to the image registry
+- Please Note:
+  - This process may take more than 1 hour to complete depending on hardware.
+  - The downloaded images may require more than 100GB of storage on the private registry machine.
+  
+```bash
+# Login to local private registry
+docker login suse-harbor-poc.suse-rancher-demo.com
+# Make Script Executable
+chmod +x rancher-load-images.sh
+# Run Script
+./rancher-load-images.sh -l rancher-images.txt -i rancher-images.tar.gz -r suse-harbor-poc.suse-rancher-demo.com
+```
+
+<p align="center">
+    <img src="Images/step-8.png">
 </p>
 
 

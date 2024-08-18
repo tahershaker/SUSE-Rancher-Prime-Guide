@@ -194,7 +194,7 @@ sudo tar -zxvf helm-v3.15.4-linux-amd64.tar.gz
 
 5. create a folder called `rke2-artifacts` and copy the downloaded files to all nodes in the cluster (master & worker). In this example we are using scp to copy the files from the JumpBpx to the Nodes and all machines are hosted on Google Cloud. Thus using Google Cloud SSH Key in the scp command
 ```bash
-sudo scp -i google_compute_engine rke2-artifacts/* root@34.76.81.211:/rke2-artifacts/
+sudo scp -i google_compute_engine -r rke2-artifacts/* root@34.76.81.211:/rke2-artifacts/
 ```
 
 <p align="center">
@@ -212,7 +212,6 @@ sudo scp -i google_compute_engine rke2-artifacts/* root@34.76.81.211:/rke2-artif
 sudo mkdir -p /etc/rancher/rke2/
 sudo cat << EOF >> /etc/rancher/rke2/config.yaml
 write-kubeconfig-mode: "0644"
-cni: "calico"
 token: “Suse!sTh3BestSince@1992”
 EOF
 ```
