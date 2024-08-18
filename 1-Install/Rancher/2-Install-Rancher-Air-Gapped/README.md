@@ -141,7 +141,7 @@ The required Helm Repositories to be added to the JumpBox so that we can retriev
   - `SUSE Rancher` Latest [Recommended for trying out the newest features] - URL: https://releases.rancher.com/server-charts/latest
   - `SUSE Rancher` Stable [Recommended for trying out the newest features] - URL: https://releases.rancher.com/server-charts/stable
   - `SUSE Rancher` Alpha [Recommended for trying out the newest features] - URL: https://releases.rancher.com/server-charts/alpha
-    - Please Note: The above mentioned `SUSE Rancher` Helm repositories are for the community edition, for Rancher Prime Repository, please refer to SUSE representative to retrieve it.
+    - Please Note: The above mentioned `SUSE Rancher` Helm repositories are for the community edition, for Rancher Prime Repository, please refer to `SUSE` representative to retrieve it.
 
 To add the above mentioned Helm Repositories, please use the below commands:
 ```bash
@@ -199,7 +199,14 @@ In this guide, we will be deploying an `SUSE Rancher` on a single node RKE2 clus
     <img src="Images/step-2.png">
 </p>
 
-3. SSH to the JumpBox (Or use your laptop) and add the required Helm repositories. Please note, the below command will add the `SUSE Rancher` community edition Helm repository. If you are deploying the `SUSE Rancher Prime`, which is the enterprise edition of `SUSE Rancher`, a different Helm repository URL is require. To get this URL, please refer to your SUSE representative.
+3. SSH to the JumpBox (Or use your laptop) and add the required Helm repositories. Please note, the below command will add the `SUSE Rancher` community edition Helm repository. If you are deploying the `SUSE Rancher Prime`, which is the enterprise edition of `SUSE Rancher`, a different Helm repository URL is require. To get this URL, please refer to your SUSE representative. Please Note: as the process is going to take several hours, if the ssh terminal session got idle for too long and halted, problems may occur, thus it is recommended to set the timers for the session to be as log as possible. In this guide i am using the -o "ServerAliveInterval 120" -o "ServerAliveCountMax 240" options in the SSH command to ensure the session will run for 4 hours.
+
+SSH Command:
+```bash
+ssh -i <key>.pem -o "ServerAliveInterval 120" -o "ServerAliveCountMax 240" <user>@<ip>
+```
+
+Commands to add the Helm Repos:
 
 ```bash
 helm repo add jetstack https://charts.jetstack.io
