@@ -129,6 +129,8 @@ helm repo update
     <img src="Images/step-3.png">
 </p>
 
+Please Note: The above `SUSE Rancher` Helm Chart Repository is for the community edition. If you are looking to deploy `SUSE Rancher Prime` which is the enterprise edition, you need to use a different URL for the `SUSE Rancher Prime` Helm Repositories. To retrieve the `SUSE Rancher Prime` Helm Repositories, please refer to your `SUSE` representative.
+
 4. Install cert-manager using Helm Chart. In this guide we are installing cert-manager version 1.13.0
 ```bash
 helm install --wait \

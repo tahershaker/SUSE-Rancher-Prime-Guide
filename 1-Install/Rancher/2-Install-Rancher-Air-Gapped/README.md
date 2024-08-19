@@ -211,6 +211,8 @@ helm repo update
     <img src="Images/step-3.png">
 </p>
 
+Please Note: The above `SUSE Rancher` Helm Chart Repository is for the community edition. If you are looking to deploy `SUSE Rancher Prime` which is the enterprise edition, you need to use a different URL for the `SUSE Rancher Prime` Helm Repositories. To retrieve the `SUSE Rancher Prime` Helm Repositories, please refer to your `SUSE` representative.
+
 4. Create a folder called `rancher-artifacts` then download in it the cert-manager Helm chart using Helm Fetch command, then retrieve all required images of the Helm cart using the helm template command and dump it in to a file called cert-manager-images.txt. With the Helm fetch command, you can specify a specific version, in this example i am using version 1.13.0. Also, we will download the cert-manager CRDs (Custom Resource Definitions) and use the same version
 
 ```bash
