@@ -12,7 +12,7 @@ This repo is created to provide the reader all the required information on insta
 
 ## About This Repo
 
-`SUSE` recommends using Helm, a Kubernetes package manager, to install `SUSE Rancher`. This is the main recommended method of installing and deploying Rancher in your environment. Even in an Air-Gapped environment, Helm is also the preferred method for deploying Rancher, however, in an Air-Gapped environment, all required files and images must be downloaded on a JumpBpx with internet access and then move files to the Kubernetes Cluster nodes and images added to the private local registry. 
+`SUSE` recommends using Helm, a Kubernetes package manager, to install `SUSE Rancher`. This is the main recommended method of installing and deploying Rancher in your environment. Even in an Air-Gapped environment, Helm is also the preferred method for deploying `SUSE Rancher`, however, in an Air-Gapped environment, all required files and images must be downloaded on a JumpBpx with internet access and then move files to the Kubernetes Cluster nodes and images added to the private local registry. 
 
 `SUSE Rancher` also supports the installation behind an HTTP proxy, if any exists in your environment, however, some extra configurations is required when deploying and installing `SUSE Rancher`. These configuration is also going to be passed thorough the Helm Chart Values.
 
@@ -60,13 +60,6 @@ Thus, The hardware resources requirements may vary, `SUSE` have officially provi
 - For hardware requirements when using RKE2 as a kubernetes distribution, please refer to this [link](https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/installation-requirements#rke2-kubernetes)
 - For hardware requirements when using K3S as a kubernetes distribution, please refer to this [link](https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/installation-requirements#k3s-kubernetes)
 - For hardware requirements when using Hosted Kubernetes (EKS, GKE, AKS) as a kubernetes distribution, please refer to this [link](https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/installation-requirements#hosted-kubernetes)
-
-Please note that `SUSE` have provided the starting point (AKA Minimum Hardware Requirements) listed in the above links are based on assumptions. These assumptions are:
-- Under 60,000 total Kubernetes resources, per type.
-- Up to 120 pods per node.
-- Up to 200 CRDs in the upstream (local) cluster.
-- Up to 100 CRDs in downstream clusters.
-- Up to 50 Fleet deployments.
 
 > Ensure Proper Disk Requirements Are In Place
 
@@ -453,6 +446,8 @@ Now you can login to your `SUSE Rancher` UI
 <p align="center">
     <img src="Images/step-13-3.png">
 </p>
+
+---
 
 ## References
 
