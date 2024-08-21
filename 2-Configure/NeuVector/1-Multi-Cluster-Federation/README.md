@@ -5,7 +5,7 @@ This repo is created to provide the reader all the required information on confi
 ---
 
 <p align="center">
-    <img src="Images/Rancher-Logo.png">
+    <img src="Images/NeuVector-Logo.png">
 </p>
 
 ---
