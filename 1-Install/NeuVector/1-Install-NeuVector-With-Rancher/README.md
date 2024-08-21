@@ -72,7 +72,7 @@ This section is a ste-by-step guide for installing the `SUSE NeuVector` through 
     <img src="Images/step-7.png">
 </p>
 
-8. Now you can log in to NeuVector
+8. Now you can log in to NeuVector - Default username is admin, default password is admin. - You should change passwords after the deployment
 
 <p align="center">
     <img src="Images/step-8.png">
