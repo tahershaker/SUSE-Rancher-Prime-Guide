@@ -60,28 +60,22 @@ This section is a ste-by-step guide for installing the `SUSE NeuVector` through 
     <img src="Images/step-5.png">
 </p>
 
-6. Click on the `Services Configuration` and then chose the `Service Type` (NodePort, ClusterIP, LoadBalancer) for the `Manager Service Type`. In this guide, as we will be configuring NeuVector Federation as well as testing Controller REST API communication, we are setting all of them as we need to expose these services to the external network for access. Please Note: In a production environment, in most of the cases, there will be an external load balancer, so you should set the Service Type to Load Balancer, in this guide we do not have a load balancer, thus we are setting it as NodPort for simplicity.
+6. Once done, click `Next`, then `Install`
 
 <p align="center">
     <img src="Images/step-6.png">
 </p>
 
-7. Once done, click `Next`, then `Install`
+7. Rancher will now install NeuVector and will show the actions in the shell terminal 
 
 <p align="center">
     <img src="Images/step-7.png">
 </p>
 
-8. Rancher will now install NeuVector and will show the actions in the shell terminal 
+8. Now you can log in to NeuVector
 
 <p align="center">
     <img src="Images/step-8.png">
-</p>
-
-9. Now you can log in to NeuVector
-
-<p align="center">
-    <img src="Images/step-9.png">
 </p>
 
 ---
