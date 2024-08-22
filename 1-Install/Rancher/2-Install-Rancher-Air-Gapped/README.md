@@ -428,7 +428,7 @@ helm install rancher ./rancher-2.8.5.tgz \
   --set hostname=suse-rancher-poc.suse-rancher-demo.com \
   --set useBundledSystemChart=true \
   --set rancherImage=suse-harbor-poc.suse-rancher-demo.com/rancher/rancher \
-  --set systemDefaultRegistry=suse-harbor-poc.suse-rancher-demo.com/rancher \
+  --set systemDefaultRegistry=suse-harbor-poc.suse-rancher-demo.com \
   --set bootstrapPassword=SusePoc@123
 ```
 
