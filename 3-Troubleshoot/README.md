@@ -34,3 +34,5 @@ kubectl taint nodes <node-name> <taint-key>:<effect>-
 
 export CRI_CONFIG_FILE=/var/lib/rancher/rke2/agent/etc/crictl.yaml
 /var/lib/rancher/rke2/bin/crictl ps
+
+/var/lib/rancher/rke2/bin/kubectl
