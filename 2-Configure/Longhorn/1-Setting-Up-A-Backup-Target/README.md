@@ -29,13 +29,11 @@ For more information about how the backup store works in Longhorn, please refer 
 If an AWS, GCP, Azure, or any cloud-based S3-compatible storage is not available and you need to perform testing or try this feature, `SUSE Longhorn` provides a way to setup a local S3 testing backup store using MinIO. For more information, please refer to this [link]( https://longhorn.io/docs/1.7.0/snapshots-and-backups/backup-and-restore/set-backup-target/#set-up-a-local-testing-backupstore)
 
 > Please Note: In this guide we will be using AWS S3 Storage.
----
 
-===================================================================
+---
 
 ## Step-By-Step Guide - Setting Up A Backup Target In SUSE Longhorn
 
-===================================================================
 
 
 
