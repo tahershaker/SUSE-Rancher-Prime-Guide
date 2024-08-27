@@ -62,6 +62,23 @@ EOF
     <img src="Images/step-01.png">
 </p>
 
+2. Set Up the AWS S3 bucket as a backup target for `SUSE Longhorn`. Log in to `SUSE Longhorn` and click on Setting > General > scroll down, then in the `backup Target` box, add your AWS S3 bucket (or the supported storage you are using ex: NFS) and in the `Backup Target Credential Secret`, add the secret name that we have created in the previous step. Once done, scroll down till the end and click on `Save`
+
+<p align="center">
+    <img src="Images/step-02.png">
+</p>
+
+3. Confirm that the Backup Target is working properly. From the top menu in `SUSE Longhorn` UI, click on `Volume`, select any volume you have and 
+
+<p align="center">
+    <img src="Images/step-03.png">
+</p>
+
+4. Check if the backup is created. From the top menu in `SUSE Longhorn` UI, click on `Backup` and see if the backup for the volume is listed.
+
+<p align="center">
+    <img src="Images/step-04.png">
+</p>
 
 ---
 
