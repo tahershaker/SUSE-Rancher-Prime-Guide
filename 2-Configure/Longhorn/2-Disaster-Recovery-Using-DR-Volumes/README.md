@@ -50,6 +50,8 @@ To configure the `SUSE Longhorn` and show case its capability in this step-by-st
 - We will deploy a wordpress application on the second kubernetes cluster from the `SUSE Rancher` Helm Chart App Market Place and use the created persistent volumes from the DR volumes
 - We will log in to the wordpress application deployed on the second kubernetes cluster and we should see that exact same changes we have made on the application deployed on the first kubernetes cluster.
 
+Let Us Start........
+
 1. Deploy wordpress application on the first kubernetes cluster using SUSE Rancher` Helm Chart App Market Place. In this step, we will configure the application to create persistent volumes and configure specific DB username and password to be able to use them when deploying the application on the secondary kubernetes cluster. The namespace used is suse-wordpress-poc
 
 <p align="center">
@@ -68,6 +70,77 @@ To configure the `SUSE Longhorn` and show case its capability in this step-by-st
     <img src="Images/step-01-4.png">
 </p>
 
+<p align="center">
+    <img src="Images/step-01-5.png">
+</p>
+
+2. Now, change the configuration of the deployed wordpress application as you see fit, you can create a new post, change the page setup, or any other changes you would like to do. In this guide, i have just changed the page setup to just add the SUSE Logo and a couple of paragraphs.
+
+<p align="center">
+    <img src="Images/step-02.png">
+</p>
+
+3. Login to `SUSE Longhorn` and then click on `Volume`, then click on the 2 volumes created by the wordpress application and click on `Create Backup`
+
+<p align="center">
+    <img src="Images/step-03.png">
+</p>
+
+4. Check if the backups are created. Click on `Backup` and confirm that the 2 backups are listed.
+
+<p align="center">
+    <img src="Images/step-04.png">
+</p>
+
+5. Login to the `SUSE Longhorn` deployed in the second kubernetes cluster and click on the `Backup` tab. You should see all the backups created from the application deployed on the first kubernetes cluster. Select the 2 backups and click on `Create Disaster Recovery Volume`
+
+<p align="center">
+    <img src="Images/step-05.png">
+</p>
+
+6. Click on the `Volume` tab, you should see the 2 volumes listed and not bounded with an indication that they are a DR volumes.
+
+<p align="center">
+    <img src="Images/step-06.png">
+</p>
+
+> At this point, you can perform any type of changes on the application deployed on the first kubernetes cluster and it should be synced as the volumes in the first kubernetes cluster is backed up and synced with the DR volumes created in the second kubernetes cluster. For the simplicity, we will skip this step and will go forward with the DR process. (We will not be deleting the application on the first kubernetes cluster, we will be installing another application on the secondary cluster and provide a different URL for it)
+
+7. Now we need to Activate the DR Volumes to stop the syncing process and convert them to a normal kubernetes PersistentVolumes. On the `SUSE Longhorn` deployed on the second kubernetes cluster, click on the `Volume` tab, select the 2 DR volumes, then click on the action box and then chose `Activate Disaster Recovery Volume`. The volumes will go into a detach process and will then show as a normal volumes
+
+<p align="center">
+    <img src="Images/step-07.png">
+</p>
+
+8. Once the volumes are detached, select the 2 DR volumes, then click on the action box and then chose `Create PV/PVC` to create actual kubernetes volumes using these DR Volumes. Provide the StorageClass name (in this case it should be longhorn) and the namespace (in this guide we are using the same namespace name - suse-wordpress-poc). Once this is completed, you should also see the volumes in kubernetes cluster.
+
+<p align="center">
+    <img src="Images/step-08-01.png">
+</p>
+
+<p align="center">
+    <img src="Images/step-08-02.png">
+</p>
+
+9. Deploy wordpress application on the second kubernetes cluster using SUSE Rancher` Helm Chart App Market Place. In this step, we will configure the application to use the existing persistent volumes and configure the DB username and password used when deploying the application on the first kubernetes cluster. The namespace used is suse-wordpress-poc
+
+<p align="center">
+    <img src="Images/step-09-1.png">
+</p>
+
+<p align="center">
+    <img src="Images/step-09-2.png">
+</p>
+
+<p align="center">
+    <img src="Images/step-09-3.png">
+</p>
+
+10. You should now access the wordpress application deployed on the second kubernetes cluster and see that same configuration you have done on the application deployed on the first kubernetes cluster.
+
+<p align="center">
+    <img src="Images/step-10.png">
+</p>
 
 ---
 
