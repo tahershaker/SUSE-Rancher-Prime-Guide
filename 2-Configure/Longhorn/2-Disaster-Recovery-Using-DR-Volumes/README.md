@@ -1,4 +1,4 @@
-# SUSE Longhorn Configuration - Setting Up A Backup Target
+# SUSE Longhorn Configuration - Configuring Longhorn DR Volumes
 
 **`SUSE Longhorn` Configuration Guide Series...**
 
