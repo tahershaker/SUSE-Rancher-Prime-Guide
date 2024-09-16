@@ -22,6 +22,8 @@ This repo will provide high-level explanation, step-by-step-guides, and scripts 
 
 The available resources in this repo are:
 - [Multi-Cluster-Federation](/2-Configure/NeuVector/1-Multi-Cluster-Federation/)
+- [NeuVector Response Rules](/2-Configure/NeuVector/2-Response-Rules/)
+- [NeuVector WAF Rules](/2-Configure/NeuVector/3-WAF-Rules/)
 
 ---
 
