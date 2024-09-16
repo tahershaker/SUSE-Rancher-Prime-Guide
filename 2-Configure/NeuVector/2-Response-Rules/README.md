@@ -48,9 +48,6 @@ vi nginx-pod.yaml
 # Create a file and past the content of the ingress.yaml into it (This is optional - you can change the service into nodePort and use it)
 vi ingress.yaml
 ```
-<p align="center">
-    <img src="Images/step-1.png">
-</p>
 
 2. Create the Namespace and the resources from the files
 ```bash
