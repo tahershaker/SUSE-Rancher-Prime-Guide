@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-ing
+  namespace: nv-response-rule-demo
+spec:
+  rules:
+    - host: <add-ingress-hostname-here>
+      http:
+        paths:
+          - backend:
+              service:
+                name: nginx-01
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix

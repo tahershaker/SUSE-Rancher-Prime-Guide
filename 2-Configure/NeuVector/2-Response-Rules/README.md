@@ -33,43 +33,61 @@ For a complete list of categorized criteria that can be configured for Response 
 
 =====================================================
 
-In this step-by-step guide we will be configuring NeuVector Response Rules and test it. The testing will depend on creating a Response Rule to be triggered based on Network Violation Security Event with an action to quarantine the related container. A wordpress is already deployed in the cluster, we will create a custom network policy rule to deny HTTPS traffic to the wordpress application Pod. Once the rule is configured and applied, we will then open an HTTPS session to the wordpress application to trigger the network violation security event and check the Response Rule have successfully quarantined the wordpress Pod
+In this step-by-step guide we will be configuring NeuVector Response Rules and test it. In our testing, we will deploy an nginx pod to be used as the source of our tests. We will be doing 2 tests:
+  - [Process Violation Response Rule] - The first test will be testing a response rule to quarantine a Pod when it uses a process that is not allowed.
+  - [Network Violation Response Rule] - The second test will be testing a response rule to quarantine a Pod when it try to access an external website using HTTPS which is not permitted.
 
-1. Access the Wordpress application before creating the custom network policy to deny HTTP traffic for testing
+| Deploy Nginx POD & Ingress (Optional) |
 
+1. SSH to the master node of the cluster and copy and past the 2 files in the [YAML-Files](/2-Configure/NeuVector/2-Response-Rules/YAML-Files/) Directory
+```bash
+# Create a directory and change to it
+mkdir nv-response-rule && cd nv-response-rule
+# Create a file and past the content of the nginx-pod.yaml into it
+vi nginx-pod.yaml
+# Create a file and past the content of the ingress.yaml into it (This is optional - you can change the service into nodePort and use it)
+vi ingress.yaml
+```
 <p align="center">
     <img src="Images/step-1.png">
 </p>
 
-2. Login to `SUSE NeuVector`, click on Policy > Response Rules > Then click on `Add to Top`
+2. Create the Namespace and the resources from the files
+```bash
+kubectl create ns nv-response-rule-demo
+kubectl apply -f nginx-pod.yaml
+kubectl apply -f ingress.yaml
+```
 
 <p align="center">
-    <img src="Images/step-2.png">
+    <img src="Images/step-2-1.png">
 </p>
 
-3. Provide the below configuration in the Response Rule Window and then click `Add`
+<p align="center">
+    <img src="Images/step-2-2.png">
+</p>
+
+| Process Violation Response Rule Testing |
+
+3. Create a Response Rule. Login to `SUSE NeuVector`, click on Policy > Response Rules > Then click on `Add to Top`
+
+<p align="center">
+    <img src="Images/step-3.png">
+</p>
+
+4. Provide the below configuration in the Response Rule Window and then click `Add`
   - Category: Security Event
-  - Group: < Chose the Group/Pod To Apply The Response Rule On > - In this example we are using the wordpress pod 
+  - Group: < Chose the Group/Pod To Apply The Response Rule On > - In this example we are using the nginx pod in the nv-response-rule-demo namespace
   - Comment: Provide the comment that you see fit
-  - Criteria: name:Network.Violation
+  - Criteria: name:Process.Profile.Violation
   - Action: check the Quarantine Box
   - Status: Enabled
-
-<p align="center">
-    <img src="Images/step-3-1.png">
-</p>
-
-<p align="center">
-    <img src="Images/step-3-2.png">
-</p>
-
-4. Create a custom network policy to deny HTTPS traffic to the Pod. click on Policy > Network Rules > Then click on `Add to Top` and provide the proper configuration to create the required rule. Once done click on Add and then Save. (PS: Make sure that the Group/Pod is in Protect mode)
 
 <p align="center">
     <img src="Images/step-4.png">
 </p>
 
-5. Open a new session to the Wordpress application using HTTPS. This session should not work (due to the configured policy) and a Security Event of type Network Violation Should have been created in NeuVector.
+5. Go to Groups and then filter for the Pod and then click on Response Rules. You should see the rule we created above. Also check the Process list Allowed, you will not see Curl in it.
 
 <p align="center">
     <img src="Images/step-5-1.png">
@@ -79,11 +97,94 @@ In this step-by-step guide we will be configuring NeuVector Response Rules and t
     <img src="Images/step-5-2.png">
 </p>
 
-6. Now confirm if the POD got quarantined. Go to Network Activity and filter with the namespace, You will find that the Pod got quarantined.
+6. Change the NeuVector Protection Mode to Protect for the nginx pod. Click on switch mode and then chose protect.
 
 <p align="center">
     <img src="Images/step-6.png">
 </p>
+
+7. Login to the Master Node of the cluster and execute a curl command on the POD to curl google.com - You should see Operation Not Permitted Error.
+```bash
+kubectl -n nv-response-rule-demo exec nginx-01 -- curl -vk http://google.com
+```
+
+<p align="center">
+    <img src="Images/step-7.png">
+</p>
+
+8. In NeuVector, In the Groups Page, Click on Member, You should see the containers as quarantined. Also, Click on Network Activity and filter with the namespace, you should see the Pod as Quarantined. If you check the Security Events, you will see a process violation which triggered the Response Rule to Quarantine.
+
+<p align="center">
+    <img src="Images/step-8-1.png">
+</p>
+
+<p align="center">
+    <img src="Images/step-8-2.png">
+</p>
+
+<p align="center">
+    <img src="Images/step-8-3.png">
+</p>
+
+9. Un-quarantine the POD, Go to Network Activity and filter with the namespace, right-click on the POD and click on Un-quarantine
+
+<p align="center">
+    <img src="Images/step-9.png">
+</p>
+
+| Network Violation Response Rule Testing |
+
+10. Add Curl to the allowed process in the nginx POD. Login to NeuVector, click on Policy > Groups, Filter with the POD Name, click on Process Profile, click Actions, then click on Add Rule. Provide the below information then click on Deploy. You should then see Curl added as an allowed process.
+
+<p align="center">
+    <img src="Images/step-10-1.png">
+</p>
+
+<p align="center">
+    <img src="Images/step-10-2.png">
+</p>
+
+<p align="center">
+    <img src="Images/step-10-3.png">
+</p>
+
+11. Click on Network Rules Tab, you should not see SSL in the allowed list (if for any reason you see it, just deleted it).
+
+<p align="center">
+    <img src="Images/step-11.png">
+</p>
+
+12. Create a Response Rule. Click on Policy > Response Rules > Then click on `Add to Top`. Provide the below configuration in the Response Rule Window and then click `Add`
+  - Category: Security Event
+  - Group: < Chose the Group/Pod To Apply The Response Rule On > - In this example we are using the nginx pod in the nv-response-rule-demo namespace
+  - Comment: Provide the comment that you see fit
+  - Criteria: name:Network.Violation
+  - Action: check the Quarantine Box
+  - Status: Enabled
+
+<p align="center">
+    <img src="Images/step-12.png">
+</p>
+
+13. Repeat the same curl command on the POD but this time make sure to use HTTPS and not HTTP. Login to the Master Node of the cluster and execute a curl command on the POD to curl google.com - You should see the connection is not being established as it is blocked by NeuVector.
+```bash
+kubectl -n nv-response-rule-demo exec nginx-01 -- curl -vk https://google.com
+```
+
+14. In NeuVector, In the Groups Page, Click on Member, You should see the containers as quarantined. Also, Click on Network Activity and filter with the namespace, you should see the Pod as Quarantined. If you check the Security Events, you will see a process violation which triggered the Response Rule to Quarantine.
+
+<p align="center">
+    <img src="Images/step-14-1.png">
+</p>
+
+<p align="center">
+    <img src="Images/step-14-2.png">
+</p>
+
+<p align="center">
+    <img src="Images/step-8-3.png">
+</p>
+
 
 ---
 

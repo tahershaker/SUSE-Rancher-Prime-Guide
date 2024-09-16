@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-01
+  namespace: nv-response-rule-demo
+  labels:
+    app: nv-response-rule-demo
+spec:
+  containers:
+    - image: nginx:latest
+      imagePullPolicy: Always
+      name: container-0
+      ports:
+        - containerPort: 80
+          name: nginx-service
+          protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-01
+  namespace: nv-response-rule-demo
+spec:
+  selector:
+    app: nv-response-rule-demo
+  ports:
+    - name: nginx-service
+      port: 80
+      protocol: TCP
+      targetPort: 80
