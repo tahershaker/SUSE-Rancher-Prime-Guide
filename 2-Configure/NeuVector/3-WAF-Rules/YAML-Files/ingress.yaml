@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nv-waf-demo-ing
+  namespace: nv-waf-demo
+spec:
+  rules:
+    - host: <put-application-hostname-fqdn-here>
+      http:
+        paths:
+          - backend:
+              service:
+                name: nginx-webui
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix
