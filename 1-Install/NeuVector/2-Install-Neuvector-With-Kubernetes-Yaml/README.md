@@ -100,7 +100,7 @@ kubectl create clusterrolebinding neuvector-binding-nvvulnerabilityprofiles --cl
 ```
 
 5. Create the NeuVector Services and Pods using the sample file available in this [link](https://raw.githubusercontent.com/neuvector/manifests/main/kubernetes/5.3.0/neuvector-k8s.yaml), or download and modify as required. In this example, we have downloaded it and modified several options as follow: (also available in the [YAML-File Directory of this repo](/1-Install/NeuVector/2-Install-Neuvector-With-Kubernetes-Yaml/YAML-Files/NueVector-Yaml-File.yaml))
-- Changed the Manager service from LoadBalancer to ClusterIP
+- Changed the Manager service from LoadBalancer to NodePort
 - Changed all PODs tags from 5.3.3 to 5.3.4 except scanner and updater - left as latest and they has to be set as latest for the updates.
 ```bash
 mkdir neuvector-yaml && cd neuvector-yaml
