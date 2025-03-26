@@ -43,7 +43,6 @@ Upgrade Scenarios Covered:
 - [Upgrade SUSE Rancher Prime Manager deployed in an Online environment](/4-Upgrade/SUSE-Rancher-Prime-Manager/1-Upgrade-SUSE-Rancher-Prime-Manager-Online/)
 - [Upgrade SUSE Rancher Prime Manager deployed in an AirGapped environment](/4-Upgrade/SUSE-Rancher-Prime-Manager/2-Upgrade-SUSE-Rancher-Prime-Manager-AirGapped/)
 
-
 ---
 
 ## References
