@@ -10,6 +10,10 @@ This repository serves as a comprehensive upgrade guide for `SUSE Rancher Prime 
 
 ---
 
+> Disclaimer: This is not an official `SUSE` document. While it is based on practical experience and best practices, it is strongly recommended to refer to the official `SUSE Rancher` documentation for the most accurate and up-to-date guidance: https://documentation.suse.com
+
+---
+
 ## About This Repo
 
 Keeping your `SUSE Rancher Prime Manager` deployment up to date is essential to ensure platform stability, enhance security, and benefit from the latest features and enhancements introduced in each release.
@@ -23,7 +27,11 @@ This repository offers all the required resources to perform a smooth and succes
 - A detailed, step-by-step upgrade guide
 - Automation scripts (when applicable)
 
-⚠️ Caution: This is not an official SUSE document. While it is based on practical experience and internal best practices, it is strongly recommended to refer to the official SUSE Rancher documentation for the most accurate and up-to-date guidance: https://documentation.suse.com
+This repository provides a detailed upgrade guide for SUSE Rancher Prime Manager deployed in two different scenarios:
+- Online environments with internet access
+- Air-gapped environments with no internet connectivity
+
+It includes validated procedures, required configurations, and helpful tips to ensure a smooth upgrade experience in both cases.
 
 ---
 
@@ -32,9 +40,9 @@ This repository offers all the required resources to perform a smooth and succes
 
 ## References
 
-- [Install Rancher On A Kubernetes Cluster Using Helm Chart](https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster)
-- [Installing Rancher Behind An HTTP Proxy](https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/other-installation-methods/rancher-behind-an-http-proxy)
-- [Installing Rancher In Air-Gapped Environment](https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install)
+- [SUSE Rancher Prime Support Matrix Link](https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/rancher-v2-10-2/)
+- [SUSE Rancher Prime Upgrade Check List](https://www.suse.com/support/kb/doc/?id=000020061)
+- [SUSE Rancher Prime Documentation - Upgrade](https://documentation.suse.com/cloudnative/rancher-manager/latest/en/installation-and-upgrade/upgrades.html)
 
 ---
 
