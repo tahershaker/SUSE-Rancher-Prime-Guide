@@ -10,7 +10,8 @@ This repository serves as a comprehensive upgrade guide for `SUSE Rancher Prime 
 
 ---
 
-> Disclaimer: This is not an official `SUSE` document. While it is based on practical experience and best practices, it is strongly recommended to refer to the official `SUSE Rancher` documentation for the most accurate and up-to-date guidance: https://documentation.suse.com
+> **Note**
+> This is not an official `SUSE` document. While it is based on practical experience and best practices, it is strongly recommended to refer to the official `SUSE Rancher` documentation for the most accurate and up-to-date guidance: https://documentation.suse.com
 
 ---
 
