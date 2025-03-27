@@ -32,7 +32,7 @@ Whether you’re running `SUSE Rancher Prime Manager` in an environment with int
 
 ## Resources Available In This Repo
 
-This repository provides a complete upgrade framework for SUSE Rancher Prime Manager, covering everything you need to plan and execute the upgrade efficiently. It addresses multiple deployment scenarios, including both online environments with internet access and air-gapped environments with no internet connectivity.
+This repo is built to give you everything you need to plan, prepare, and upgrade your `SUSE Rancher Prime Manager` — smoothly and successfully. This repo cover multiple deployment scenarios, so no matter your setup, you’ll find what you need here.
 
 Upgrade Scenarios Covered:
 - [Upgrade SUSE Rancher Prime Manager deployed in an Online environment](/4-Upgrade/SUSE-Rancher-Prime-Manager/1-Upgrade-SUSE-Rancher-Prime-Manager-Online/)
