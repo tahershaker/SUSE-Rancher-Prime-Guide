@@ -1,6 +1,6 @@
 # Upgrading SUSE Rancher Prime Manager
 
-This repository serves as a comprehensive upgrade guide for `SUSE Rancher Prime Manager`, offering clear documentation and tooling to support both online and air-gapped environments. It is designed to help teams execute upgrades with confidence, minimal disruption, and enterprise-grade reliability. This guide is mainly created for SUSE Solution Architects as a reference guide. It is also designed to support Infrastructure, Cloud-Native, and DevOps teams in organizations utilizing `SUSE Rancher` solutions.
+This repository is your step-by-step guide to upgrading `SUSE Rancher Prime Manager` — whether you’re working in a connected environment or an isolated, air-gapped setup. It’s designed to make the upgrade process clear, efficient, and worry-free, with minimal disruption to your workloads. While this guide is primarily built for `SUSE` Solution Architects, it’s also a practical resource for Infrastructure, Cloud-Native, and DevOps teams managing `SUSE Rancher Prime` solution in real-world environments. If you’re looking for a reliable way to keep your `SUSE Rancher Prime` deployment secure, up-to-date, and running at its best — you’re in the right place.
 
 ---
 
