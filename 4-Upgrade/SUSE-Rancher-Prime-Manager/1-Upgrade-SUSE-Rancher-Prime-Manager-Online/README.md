@@ -11,7 +11,7 @@ This repository is your step-by-step guide to upgrading `SUSE Rancher Prime Mana
 ---
 
 > ⚠️ Disclaimer
-
+>
 > This is not an official SUSE document. While it’s based on hands-on experience and proven practices, please refer to the official documentation for the latest guidance: https://documentation.suse.com
 
 ---
