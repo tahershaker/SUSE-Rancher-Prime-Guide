@@ -28,7 +28,11 @@ Keeping your `SUSE Rancher Prime Manager` up to date is key to maintaining stabi
 If you’re running `SUSE Rancher Prime Manager` in an environment with internet access, this guide is tailored just for you.
 
 ---
+
+#########################
 > **Let's Get Started**
+#########################
+
 ---
 
 **Enjoy** :blush:
