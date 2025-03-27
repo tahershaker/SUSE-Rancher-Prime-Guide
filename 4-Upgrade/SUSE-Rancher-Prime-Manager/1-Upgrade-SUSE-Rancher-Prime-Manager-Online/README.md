@@ -29,7 +29,7 @@ If you’re running `SUSE Rancher Prime Manager` in an environment with internet
 
 ---
 
-> ........................     
+> _________________________     
 >     
 > **Let's Get Started** 🚀
 >     
