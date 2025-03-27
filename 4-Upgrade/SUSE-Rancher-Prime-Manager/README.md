@@ -17,22 +17,16 @@ This repository serves as a comprehensive upgrade guide for `SUSE Rancher Prime 
 
 ## About This Repo
 
-Keeping your `SUSE Rancher Prime Manager` deployment up to date is essential to ensure platform stability, enhance security, and benefit from the latest features and enhancements introduced in each release.
+Keeping your `SUSE Rancher Prime Manager` up to date is one of the easiest and most important things you can do to keep your platform stable, secure, and always running with the latest features. Thankfully, `SUSE Rancher Prime` makes upgrades smooth and straightforward using Helm — no complex workflows, just clear steps.
 
-`SUSE Rancher Prime` provides a straightforward and reliable upgrade experience through Helm, making it simple for platform teams to maintain and evolve their Kubernetes management infrastructure.
+This repo is your go-to guide for upgrading `SUSE Rancher Prime Manager`. It walks you through the entire process with a clean, step-by-step structure and includes everything you’ll need to get the job done right:
+- How to verify your upgrade path
+- What to check before you start
+- Prerequisites to be ready
+- A complete upgrade guide
+- Scripts and automation (when needed)
 
-This repository offers all the required resources to perform a smooth and successful upgrade of `SUSE Rancher Prime Manager`. It includes:
-- Verifying the upgrade path
-- Pre-upgrade checklist
-- Prerequisites
-- A detailed, step-by-step upgrade guide
-- Automation scripts (when applicable)
-
-This repository provides a detailed upgrade guide for SUSE Rancher Prime Manager deployed in two different scenarios:
-- Online environments with internet access
-- Air-gapped environments with no internet connectivity
-
-It includes validated procedures, required configurations, and helpful tips to ensure a smooth upgrade experience in both cases.
+Whether you’re running `SUSE Rancher Prime Manager` in an environment with internet access or in a fully restricted, air-gapped setup, this guide covers both scenarios with clear, dedicated instructions.
 
 ---
 
