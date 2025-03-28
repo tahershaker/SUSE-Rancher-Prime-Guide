@@ -76,13 +76,13 @@ For example, upgrading from v2.9.x to v2.11.x should be done in stages:
 Pre-release versions (marked with -rc, like v2.10.0-rc4) are meant for testing, not production.**
 - If you’re currently on a pre-release, upgrade first to the stable release of that version (e.g., v2.10.0-rc4 → v2.10.0)
 - Then, proceed with your planned upgrade path using only stable releases.
-- Stick to stable-to-stable upgrades.
+
+👉 **Stick to stable-to-stable upgrades.**
+
 - You can explore official release tags and notes here: [Pre-release v2.10.0-rc4](https://github.com/rancher/rancher/releases/tag/v2.10.0-rc4) & [Stable release v2.10.0](https://github.com/rancher/rancher/releases/tag/v2.10.0)
 
 
 
-- It is highly recomended not to skip minor versions when upgrading. For example, if you are looking to upgrade from SUSE Rancher Prime Manager v2.9.x to 2.11.x, you should not do the upgrade direct and you should consider moving through the minor version, thus an upgrade path for this example would be v2.9.x -> v2.10.x -> 2.11.x
-- Always plan to upgrade from a stable version to a stable version. Do not concider upgrading from/to a pre-release or a non-stable version. You can identify the pre-release by the `**-rc**` (eg; v2.10.0-rc4 is a prerelease - you can check the following link [Pre-release v2.10.0-rc4](https://github.com/rancher/rancher/releases/tag/v2.10.0-rc4)). refering to this example, you should be upgrading from/to v2.10.0 release which is the stable release for this version (you can check the following link [v2.10.0](https://github.com/rancher/rancher/releases/tag/v2.10.0)). If you are already on a non-stable release, upgrade first to the stable release of the current version (eg; v2.10.0-rc4 to v2.10.0) then plan your upgrade path to th erelease you are targeting to upgrade to.
 
 ---
 
