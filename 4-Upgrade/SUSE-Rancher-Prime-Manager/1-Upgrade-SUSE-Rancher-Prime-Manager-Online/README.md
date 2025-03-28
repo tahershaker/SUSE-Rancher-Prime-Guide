@@ -79,7 +79,7 @@ Pre-release versions (marked with -rc, like v2.10.0-rc4) are meant for testing, 
 
 👉 **Stick to stable-to-stable upgrades.**
 
-- You can explore official release tags and notes here: [Pre-release v2.10.0-rc4](https://github.com/rancher/rancher/releases/tag/v2.10.0-rc4) & [Stable release v2.10.0](https://github.com/rancher/rancher/releases/tag/v2.10.0)
+Always ensure you’re upgrading to a stable release of `SUSE Rancher Prime Manager`. You can explore official release tags and notes here: [Pre-release v2.10.0-rc4](https://github.com/rancher/rancher/releases/tag/v2.10.0-rc4) & [Stable release v2.10.0](https://github.com/rancher/rancher/releases/tag/v2.10.0)
 
 
 
