@@ -12,14 +12,14 @@ This repository is your step-by-step guide to upgrading `SUSE Rancher Prime Mana
 
 > ⚠️ Disclaimer
 >
-> This is not an official SUSE document. While it’s based on hands-on experience and proven practices, please refer to the official documentation for the latest guidance: https://documentation.suse.com
+> This is not an official `SUSE` document. While it’s based on hands-on experience and proven practices, please refer to the official documentation for the latest guidance: https://documentation.suse.com
 
 ---
 
 ## About This Repo
 
 Keeping your `SUSE Rancher Prime Manager` up to date is key to maintaining stability, security, and gaining access to the latest features. The good news? Upgrading is simple — thanks to Helm and `SUSE’s` streamlined process. This repo provides a complete, step-by-step guide to help you confidently upgrade your `SUSE Rancher Prime Manager` instance in an online (connected) environment. Here’s what you’ll find inside:
-- Upgrade path verification
+- Upgrade path & support matrix verification
 - Pre-upgrade checklist
 - Prerequisites and planning steps
 - Step-by-step upgrade guide using Helm
@@ -39,7 +39,50 @@ If you’re running `SUSE Rancher Prime Manager` in an environment with internet
 
 > 📝 **Please Note:
 >
-> This repository focuses solely on upgrading the SUSE Rancher Prime Manager. If you’re looking to upgrade your entire environment, including the Kubernetes clusters managed by Rancher (both Management and Downstream Clusters), make sure to also refer to the appropriate guides - [Upgrade SUSE Rancher Kubernetes Engine – RKE2](/4-Upgrade/SUSE-Kubernetes-Engine-RKE2/) for RKE2 environments or [Upgrade SUSE Rancher Kubernetes Engine – K3s](/4-Upgrade/SUSE-Kubernetes-Engine-K3S/) for K3s environments
+> This repository focuses solely on upgrading the `SUSE Rancher Prime Manager`. If you’re looking to upgrade your entire environment, including the Kubernetes clusters managed by Rancher (both Management and Downstream Clusters), make sure to also refer to the appropriate guides - [Upgrade SUSE Rancher Kubernetes Engine – RKE2](/4-Upgrade/SUSE-Kubernetes-Engine-RKE2/) for RKE2 environments or [Upgrade SUSE Rancher Kubernetes Engine – K3s](/4-Upgrade/SUSE-Kubernetes-Engine-K3S/) for K3s environments
+
+---
+
+## SUSE Rancher Prime Manager Upgrade Guide - Upgrade Path & Support Matrix
+
+
+Before you begin any upgrade, it’s important to plan your upgrade path carefully. This means:
+- ✅ Knowing which version you’re upgrading from and to
+- 🔄 Understanding the compatibility between the `SUSE Rancher Prime Manager` version and your Kubernetes cluster version
+- ⬆️ Deciding the correct order in which components should be upgraded first
+
+with that being said, let us ask th ecorrect questions and plan our upgrade accordingly
+
+| What Component Should Be Upgraded First?
+
+Always start with upgrading the `SUSE Rancher Prime Manager`. Once that’s complete and verified, move on to upgrading your Kubernetes clusters — whether they are:
+- RKE2 or K3s clusters managed by Rancher
+- Public cloud services like EKS, AKS, or GKE
+- Or even standalone/vanilla Kubernetes distributions
+
+For the official guidance on upgrade order and supportability, refer to this `SUSE` KB article: 👉 [Which Component Should Be Upgraded First](https://www.suse.com/support/kb/doc/?id=000020061)
+
+| What should be my upgrade path (Version to Version)? 
+
+To keep your environment stable and supported, follow these recommendations:
+
+👉 **Don’t skip minor versions.**
+For example, upgrading from v2.9.x to v2.11.x should be done in stages:
+→ v2.9.x → v2.10.x → v2.11.x
+
+👉 **Avoid upgrading to or from pre-releases.**
+Pre-release versions (marked with -rc, like v2.10.0-rc4) are meant for testing, not production.**
+- If you’re currently on a pre-release, upgrade first to the stable release of that version (e.g., v2.10.0-rc4 → v2.10.0)
+- Then, proceed with your planned upgrade path using only stable releases.
+- Stick to stable-to-stable upgrades.
+- You can explore official release tags and notes here:
+  - [Pre-release v2.10.0-rc4](https://github.com/rancher/rancher/releases/tag/v2.10.0-rc4)
+  - [Stable release v2.10.0](https://github.com/rancher/rancher/releases/tag/v2.10.0)
+
+
+
+- It is highly recomended not to skip minor versions when upgrading. For example, if you are looking to upgrade from SUSE Rancher Prime Manager v2.9.x to 2.11.x, you should not do the upgrade direct and you should consider moving through the minor version, thus an upgrade path for this example would be v2.9.x -> v2.10.x -> 2.11.x
+- Always plan to upgrade from a stable version to a stable version. Do not concider upgrading from/to a pre-release or a non-stable version. You can identify the pre-release by the `**-rc**` (eg; v2.10.0-rc4 is a prerelease - you can check the following link [Pre-release v2.10.0-rc4](https://github.com/rancher/rancher/releases/tag/v2.10.0-rc4)). refering to this example, you should be upgrading from/to v2.10.0 release which is the stable release for this version (you can check the following link [v2.10.0](https://github.com/rancher/rancher/releases/tag/v2.10.0)). If you are already on a non-stable release, upgrade first to the stable release of the current version (eg; v2.10.0-rc4 to v2.10.0) then plan your upgrade path to th erelease you are targeting to upgrade to.
 
 ---
 
