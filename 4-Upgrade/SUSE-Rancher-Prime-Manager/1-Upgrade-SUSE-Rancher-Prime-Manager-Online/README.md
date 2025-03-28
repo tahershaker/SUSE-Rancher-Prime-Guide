@@ -53,7 +53,7 @@ Before you begin any upgrade, it’s important to plan your upgrade path careful
 
 with that being said, let us ask th ecorrect questions and plan our upgrade accordingly
 
-| What Component Should Be Upgraded First?
+> What Component Should Be Upgraded First?
 
 Always start with upgrading the `SUSE Rancher Prime Manager`. Once that’s complete and verified, move on to upgrading your Kubernetes clusters — whether they are:
 - RKE2 or K3s clusters managed by Rancher
@@ -62,7 +62,7 @@ Always start with upgrading the `SUSE Rancher Prime Manager`. Once that’s comp
 
 For the official guidance on upgrade order and supportability, refer to this `SUSE` KB article: 👉 [Which Component Should Be Upgraded First](https://www.suse.com/support/kb/doc/?id=000020061)
 
-| What should be my upgrade path (Version to Version)? 
+> What should be my upgrade path (Version to Version)? 
 
 To keep your environment stable and supported, follow these recommendations:
 
