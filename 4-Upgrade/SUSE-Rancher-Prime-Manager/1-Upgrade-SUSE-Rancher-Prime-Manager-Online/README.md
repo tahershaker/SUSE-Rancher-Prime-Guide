@@ -1,6 +1,6 @@
 # Upgrading SUSE Rancher Prime Manager (With Internet Access)
 
-This repository is your step-by-step guide to upgrading `SUSE Rancher Prime Manager` in environments with internet access. Whether you’re performing a routine upgrade or preparing for a major version jump, this guide is here to help you do it smoothly, securely, and with confidence. It’s primarily built for `SUSE` Solution Architects, but it’s also a valuable resource for Infrastructure, Cloud-Native, and DevOps teams managing `SUSE Rancher Prime` solution in production environments. If you’re looking for a straightforward way to keep your `SUSE Rancher Prime`  deployment up to date and rock-solid — you’re in the right place.
+This repository is your step-by-step guide to upgrading `SUSE Rancher Prime Manager` in environments with internet access. Whether you’re performing a routine upgrade or preparing for a major version jump, this guide is here to help you do it smoothly, securely, and with confidence. This repository is primarily built for `SUSE` Solution Architects, but it’s also a valuable resource for Infrastructure, Cloud-Native, and DevOps teams managing `SUSE Rancher Prime` solution in production environments. If you’re looking for a straightforward way to keep your `SUSE Rancher Prime`  deployment up to date and rock-solid — you’re in the right place.
 
 ---
 
@@ -18,7 +18,7 @@ This repository is your step-by-step guide to upgrading `SUSE Rancher Prime Mana
 
 ## About This Repo
 
-Keeping your `SUSE Rancher Prime Manager` up to date is key to maintaining stability, security, and gaining access to the latest features. The good news? Upgrading is simple — thanks to Helm and `SUSE’s` streamlined process. This repo provides a complete, step-by-step guide to help you confidently upgrade your `SUSE Rancher Prime Manager` instance in an online (connected) environment. Here’s what you’ll find inside:
+Keeping your `SUSE Rancher Prime Manager` up to date is key to maintaining stability, security, and gaining access to the latest features. The good news? Upgrading is simple — Upgrading is, in fact, a straightforward process — and that’s one of the great things about working with the `SUSE Rancher Prime Manager`. It’s designed to make the upgrade experience as smooth and simple as possible. That said, how you approach the upgrade still matters. Taking the time to follow the right steps ensures everything continues running exactly as it should — with no disruptions, no surprises, and all the new features ready to go.. This repo provides a complete, step-by-step guide to help you confidently upgrade your `SUSE Rancher Prime Manager` instance in an online (connected) environment. Here’s what you’ll find inside:
 - Upgrade path & support matrix verification
 - Pre-upgrade checklist
 - Prerequisites and planning steps
@@ -47,36 +47,20 @@ If you’re running `SUSE Rancher Prime Manager` in an environment with internet
 
 Getting ready to upgrade your `SUSE Rancher Prime Manager` is more than just a technical step — it’s a moment to pause, align your thoughts, and make sure everything is set up for success. Think of it like preparing for a journey: the more you plan ahead, the smoother the road will be. And don’t worry — you don’t need to overthink it. With the right questions in mind and a few smart checks in place, you’ll be on track for a clean and confident upgrade.
 
-So, where should you begin?
-
-Well, one of the first things to think about is **which components in your environment need to be upgraded, and in what order**. In most cases, the upgrade should start with the `SUSE Rancher Prime Manager` itself — this is your management plane, the central brain of the operation. Once that’s upgraded and running smoothly, you can move on to the clusters it manages — whether those are `RKE2`, `K3s`, cloud services like EKS, AKS, GKE, or even vanilla Kubernetes distributions.
-
-Next comes **version planning**. You’ll want to decide exactly which version you’re moving from, and which one you’re targeting. It’s not just about jumping to the latest — it’s about ensuring the upgrade path is supported and tested. Ask yourself: am I moving between stable releases? Am I skipping any versions? The answers here are key.
-
-Now let’s talk about **compatibility**. Not every version of `SUSE Rancher Prime` is compatible with every Kubernetes version, so it’s important to check if your desired setup is supported. For example, if you’re running `RKE2` v1.29.x, you’ll want to validate whether that version works smoothly with your targeted `SUSE Rancher Prime Manager` release (say, v2.10.0). Doing this early helps you avoid compatibility issues that might otherwise show up mid-upgrade.
-
-And of course, **timing** matters too. Make sure you’ve scheduled a proper maintenance window, aligned with your team and any stakeholders involved. It’s also a good idea to communicate the upgrade plan in advance so everyone is aware and prepared — especially if you’re running in production.
-
-Another essential part of this prep work is **taking a backup**. This can’t be stressed enough. You should never attempt a Rancher upgrade without a reliable backup in place. Thankfully, the `SUSE Rancher Prime Backup` Operator makes this easy — it’s purpose-built for this exact scenario and ensures you can recover if anything goes sideways.
-
-Lastly, and just as important: do you have a **rollback strategy** in place? It’s not something you ever want to use, but it’s something you should always have ready. Upgrades rarely fail if they’re well-prepared — but in the rare case that something unexpected does happen, you’ll be glad you took the time to plan your way back.
-
 | 📝 **Please Note:** |
 |:--------------------|
-| If your environment includes clusters managed by Rancher â€” whether itâ€™s the Management Cluster or any Downstream Clusters â€” youâ€™ll want to apply similar upgrade planning to those as well. Be sure to check the appropriate upgrade guides:
+| If your environment includes Kubernetes clusters managed by `SUSE Rancher Prime Manager` — whether that’s the Management Cluster itself or any of the connected Downstream Clusters — and you’re planning to upgrade those too, the same level of planning applies. You’ll want to make sure they follow a proper upgrade path just like the manager. To help with that, be sure to review the relevant guides:
  [Upgrade SUSE Rancher Kubernetes Engine – RKE2](/4-Upgrade/SUSE-Kubernetes-Engine-RKE2/) for RKE2 environments or [Upgrade SUSE Rancher Kubernetes Engine – K3s](/4-Upgrade/SUSE-Kubernetes-Engine-K3S/) for K3s environments|
 
-Now that we’ve covered the foundational planning steps, let’s dive into some of the most frequently asked upgrade questions.
+So, now that you’ve got the foundation in place, where do you go from here? Let’s dive into some of the most common upgrade and planing questions and walk through them together.
 
 > What Component Should Be Upgraded First?
 
-A common question — and an important one. In `SUSE Rancher Prime` environments, the upgrade should always begin with the management plane, which means the `SUSE Rancher Prime Manager` comes first. Once that upgrade is complete and validated, you can move on to the data plane — your Kubernetes clusters. This sequencing is key to avoiding disruption and ensuring a stable transition.
-
-If you’d like more detail straight from SUSE, you can check out the official upgrade checklist here:[Rancher Upgrade Checklist](https://www.suse.com/support/kb/doc/?id=000020061)
+One of the first things to consider is which components in your environment need to be upgraded, and in what order — a common question, and an important one. In SUSE Rancher Prime environments, the upgrade should always begin with the management plane, which means starting with the SUSE Rancher Prime Manager. Once that upgrade is complete and validated, you can shift your focus to the data plane — your Kubernetes clusters — whether those are RKE2, K3s, cloud services like EKS, AKS, GKE, or even vanilla Kubernetes. This sequence helps you avoid disruption and ensures a stable, well-orchestrated upgrade.
 
 > What Should My Upgrade Path Look Like?
 
-When planning the version jump, there are **two golden rules** you’ll want to follow closely.
+Next comes **version planning**. You’ll want to decide exactly which version you’re moving from, and which one you’re targeting. It’s not just about jumping to the latest — it’s about ensuring the upgrade path is supported and tested. When planning the version jump, there are **two golden rules** you’ll want to follow closely.
 
 First, **don’t skip minor versions**. It might sound like a time-saver to go directly from v2.9.x to v2.11.x, but that approach isn’t recommended — and in most cases, may cause issues. Instead, you’ll want to take the path in stages (ex: v2.9.x → v2.10.x → v2.11.x). This ensures each version has the chance to apply its changes and keeps your upgrade path fully supported.
 
@@ -86,6 +70,39 @@ Second, always **avoid upgrading to or from pre-release or non-stable versions**
 - v2.10.0 is a stable release - [check it here](https://github.com/rancher/rancher/releases/tag/v2.10.0)
 
 If you’re already on a pre-release, no problem — just upgrade first to its stable counterpart (for example, v2.10.0-rc4 → v2.10.0), and from there, you can safely continue with your upgrade journey.
+
+> How Do I Ensure Compatibility Between My Rancher and Kubernetes Versions?
+
+Now let’s talk about **compatibility** — a step that’s easy to overlook, but can have a big impact on your upgrade path. Not every version of `SUSE Rancher Prime` is compatible with every Kubernetes release, so it’s important to make sure the versions you’re working with actually support each other. For example, if you’re running `RKE2` v1.29.x, you’ll want to verify that it aligns with the version of `SUSE Rancher Prime Manager` you plan to upgrade to — say, v2.10.2. Doing this check early helps you avoid running into version conflicts mid-upgrade.
+
+And here’s why this matters so much: **compatibility can reshape your upgrade sequence**. While the usual approach is to upgrade `SUSE Rancher Prime Manager` first, there are scenarios where that needs to be reversed.
+
+Imagine you’re running `RKE2` v1.27 with `SUSE Rancher Prime` v2.9.7, and you’re aiming for v2.10.2. If v2.10.2 doesn’t support `RKE2` v1.27, you can’t upgrade `SUSE Rancher Prime` right away. Instead, you’ll need to upgrade `RKE2` first — but to a version that’s supported by both v2.9.7 and v2.10.2, such as v1.29. Only then can you safely move forward with the `SUSE Rancher Prime Manager` upgrade.
+
+So yes, checking compatibility might seem like a small step — but it can completely reshape your plan. The key is to build your upgrade path around what’s supported, not just what’s typical.
+
+For the full picture, make sure to consult the official [SUSE Support Matrix](https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/rancher-v2-10-2/) — it’s the definitive source for what works with what.
+
+> Is My Backup Ready?
+
+Another essential part of your upgrade preparation — and one that’s often underestimated — is **having a reliable backup** in place. And no, this isn’t just a best practice checkbox. It’s your safety net.
+
+Upgrades don’t usually go wrong… but when they do, having a backup can mean the difference between a smooth rollback and a full-blown recovery headache. Whether it’s a failed deployment, a configuration error, or an unexpected compatibility issue — a backup gives you the ability to pause, restore, and get back on track without losing your environment or data.
+
+The good news? `SUSE Rancher Prime` makes this easy with its **Backup Operator** — a tool purpose-built to help you protect your `SUSE Rancher Prime Manager` environment. It automates the backup and restore process and is especially handy in upgrade and disaster recovery scenarios.
+
+Now, this guide doesn’t go deep into how to install or configure the Backup Operator — but no worries. You can find everything you need in the [SUSE Official Documentation – Backup, Restore, and Disaster Recovery](https://documentation.suse.com/cloudnative/rancher-manager/latest/en/rancher-admin/back-up-restore-and-disaster-recovery/back-up-restore-and-disaster-recovery.html) or follow along with another guide in this series: [Installing SUSE Rancher Prime Backup Operator](/2-Configure/Rancher/SUSE-Rancher-Prime-Backup/).
+
+Before going any further with your upgrade, take a moment to ask yourself:
+**Is my backup ready** — and have I tested it? If the answer isn’t a confident yes, this is the perfect time to pause and set that up.
+
+> What’s My Plan If I Need to Roll Back?
+
+So here’s a final — but just as critical — question to ask before upgrading: **Do you have a rollback strategy in place?**
+
+Hopefully, you’ll never need it. A well-prepared upgrade rarely goes sideways. But in the off chance that something unexpected happens — whether it’s a failed deployment, an unreachable service, or just something that doesn’t feel right — having a tested rollback plan can be a real lifesaver.
+
+This isn’t about being pessimistic; it’s about being smart. A solid rollback strategy gives you the confidence to move forward, knowing that if anything goes wrong, you have a clear path back to a working state.
 
 ---
 
