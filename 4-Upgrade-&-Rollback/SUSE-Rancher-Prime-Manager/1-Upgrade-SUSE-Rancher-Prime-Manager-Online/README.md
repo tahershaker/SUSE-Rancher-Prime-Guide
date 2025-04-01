@@ -104,6 +104,44 @@ So yes, checking compatibility might seem like a small step — but it can compl
 
 For the full picture, make sure to consult the official [SUSE Support Matrix](https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/rancher-v2-10-2/) — it’s the definitive source for what works with what.
 
+> Do I Have the Right Tools and Access to Perform the Upgrade?
+
+Before starting the upgrade process, it’s essential to make sure you have everything in place — not just from a planning perspective, but also in terms of **access and tooling**. Having the right setup from the beginning helps you avoid last-minute delays, permission issues, or broken workflows midway through the upgrade.
+
+To successfully upgrade `SUSE Rancher Prime Manager`, you’ll need a few things ready to go:
+
+First, ensure you have access to the management cluster — this is the Kubernetes cluster where `SUSE Rancher Prime Manager` is deployed. You’ll need a valid kubeconfig file that grants you sufficient permissions on this cluster.
+- If the management cluster is running on `RKE2`, the kubeconfig can be found at:
+`/etc/rancher/rke2/rke2.yaml` - [More info on RKE2 cluster access](https://docs.rke2.io/cluster_access)
+- If the cluster is running on `K3s`, the kubeconfig is typically located at:
+`/etc/rancher/k3s/k3s.yaml` - [More info on K3s cluster access](https://docs.k3s.io/cluster-access)
+
+Next, make sure the kubectl CLI is installed and properly configured on the same machine you’ll be using for the upgrade — usually a bastion host or your admin workstation.
+
+And most importantly, have the `Helm` CLI installed — this is the tool used to initiate and manage the `SUSE Rancher Prime Manager` upgrade. `Helm` commands should be executed from the same environment that has access to your kubeconfig. You can also explicitly reference the config file using the --kubeconfig flag, like this: `helm upgrade rancher rancher-prime/rancher --kubeconfig <path-to-the-kubeconfig-file>`
+
+⚠️ **Important Note**: `SUSE Rancher Prime Manager` only supports `Helm` v3. `Helm` v2 is deprecated (as of the `Rancher` v2.7 and is removed in `Rancher` v2.9) and not supported for installation, upgrade, or management of `SUSE Rancher Prime Manager`. If you’re unsure which version of `Helm` you’re using, you can check by running: `helm version`. If you’re still using `Helm` v2, you must migrate to `Helm` v3. You can find the official migration guide here: [Migrate from Helm v2 to Helm v3](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/)
+
+Bringing it all together — your upgrade-ready toolkit should include:
+- Access to the management cluster
+- A valid kubeconfig for that cluster
+- The kubectl CLI installed and configured
+- The Helm v3 CLI installed and verified
+
+Once all of that is set, you’re good to go. You now have everything you need to execute the upgrade confidently and cleanly — without having to pause midway for missing tools or access rights.
+
+> Do I Have Enough Resources to Run This Upgrade Smoothly?
+
+While upgrading `SUSE Rancher Prime Manager` usually doesn’t introduce new hardware demands or spike resource consumption, it’s still important to take a moment and check your cluster’s resource health before diving in.
+
+Most versions of `SUSE Rancher Prime Manager` follow a fairly consistent footprint in terms of CPU and memory usage — and the upgrade process itself doesn’t typically add overhead. That said, it’s still considered a best practice to verify that your management cluster has sufficient resources available to comfortably run ` SUSE Rancher Prime Manager` during and after the upgrade.
+
+Specifically, you’ll want to ensure that:
+- There are enough resources (CPU and memory) to support each container in the `SUSE Rancher Prime Manager` deployment — typically this includes three pods.
+- The overall cluster resource utilization remains below 70%, both before and during the upgrade process. This helps you avoid issues related to resource contention or performance degradation.
+
+By doing a quick resource health check ahead of time, you’re giving yourself extra confidence that the upgrade will proceed smoothly — without unexpected slowdowns, crashes, or deployment failures due to lack of available resources. For more information about `SUSE Rancher Prime Manager` hardware and resource requirements, refer to the official [SUSE documentation - SUSE Rancher Prime – Hardware Requirements](https://documentation.suse.com/cloudnative/rancher-manager/latest/en/installation-and-upgrade/requirements/requirements.html#_hardware_requirements)
+
 > Is My Backup Ready?
 
 Another essential part of your upgrade preparation — and one that’s often underestimated — is **having a reliable backup** in place. And no, this isn’t just a best practice checkbox. It’s your safety net.
@@ -123,10 +161,14 @@ So here’s a final — but just as critical — question to ask before upgradin
 
 Hopefully, you’ll never need it. A well-prepared upgrade rarely goes sideways. But in the off chance that something unexpected happens — whether it’s a failed deployment, an unreachable service, or just something that doesn’t feel right — having a tested rollback plan can be a real lifesaver.
 
-This isn’t about being pessimistic; it’s about being smart. A solid rollback strategy gives you the confidence to move forward, knowing that if anything goes wrong, you have a clear path back to a working state.
+Rolling back a `SUSE Rancher Prime Manager` upgrade involves more than just reverting the version — it typically includes cleanup steps, verification, and ensuring everything is brought back to a stable state. While this repository doesn’t focus on the rollback process in detail, you can refer to the official [SUSE documentation - Rollback](https://documentation.suse.com/cloudnative/rancher-manager/latest/en/installation-and-upgrade/rollbacks.html) or follow along with another guide in this series: [Rollback SUSE Rancher Prime Manager](/4-Upgrade-&-Rollback/SUSE-Rancher-Prime-Manager/3-Rolback-SUSE-Rancher-Prime-Manager/)
 
 ---
 
+available resources, 
+
+proxy settings
+review known issues
 
 
 ---
@@ -136,7 +178,7 @@ This isn’t about being pessimistic; it’s about being smart. A solid rollback
 - [SUSE Rancher Prime Support Matrix Link](https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/rancher-v2-10-2/)
 - [SUSE Rancher Prime Upgrade Check List](https://www.suse.com/support/kb/doc/?id=000020061)
 - [SUSE Rancher Prime Documentation - Upgrade](https://documentation.suse.com/cloudnative/rancher-manager/latest/en/installation-and-upgrade/upgrades.html)
-
+- [SUSE Rancher Prime Documentation - Rollback](https://documentation.suse.com/cloudnative/rancher-manager/latest/en/installation-and-upgrade/rollbacks.html)
 ---
 
 **Enjoy** :blush:

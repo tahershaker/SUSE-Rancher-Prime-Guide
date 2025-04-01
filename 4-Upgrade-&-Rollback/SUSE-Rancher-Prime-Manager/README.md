@@ -36,15 +36,14 @@ Whether you’re running `SUSE Rancher Prime Manager` in an environment with int
 This repo is built to give you everything you need to plan, prepare, and upgrade your `SUSE Rancher Prime Manager` — smoothly and successfully. This repo cover multiple deployment scenarios, so no matter your setup, you’ll find what you need here.
 
 Upgrade Scenarios Covered:
-- [Upgrade SUSE Rancher Prime Manager deployed in an Online environment](/4-Upgrade/SUSE-Rancher-Prime-Manager/1-Upgrade-SUSE-Rancher-Prime-Manager-Online/)
-- [Upgrade SUSE Rancher Prime Manager deployed in an AirGapped environment](/4-Upgrade/SUSE-Rancher-Prime-Manager/2-Upgrade-SUSE-Rancher-Prime-Manager-AirGapped/)
+- [Upgrade SUSE Rancher Prime Manager deployed in an Online environment](/4-Upgrade-&-Rollback/SUSE-Rancher-Prime-Manager/1-Upgrade-SUSE-Rancher-Prime-Manager-Online/)
+- [Upgrade SUSE Rancher Prime Manager deployed in an AirGapped environment](/4-Upgrade-&-Rollback/SUSE-Rancher-Prime-Manager/2-Upgrade-SUSE-Rancher-Prime-Manager-AirGapped/)
+- [Rollback SUSE Rancher Prime Manager](/4-Upgrade-&-Rollback/SUSE-Rancher-Prime-Manager/3-Rolback-SUSE-Rancher-Prime-Manager/)
 
 ---
 
 ## References
 
-- [SUSE Rancher Prime Support Matrix Link](https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/rancher-v2-10-2/)
-- [SUSE Rancher Prime Upgrade Check List](https://www.suse.com/support/kb/doc/?id=000020061)
 - [SUSE Rancher Prime Documentation - Upgrade](https://documentation.suse.com/cloudnative/rancher-manager/latest/en/installation-and-upgrade/upgrades.html)
 
 ---
