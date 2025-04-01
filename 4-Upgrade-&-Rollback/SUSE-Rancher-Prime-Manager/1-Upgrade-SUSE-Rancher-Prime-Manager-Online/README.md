@@ -218,7 +218,7 @@ By now, you’ve gone through all the key considerations that go into planning a
 Each item here reflects a critical step in the planning process. Going through this list before you begin ensures you’ve covered all bases and are fully prepared to move into the upgrade phase.
 
 | ID | Checks | Description | Status |
-| -- | ------ | ----------- | ------ |
+| -- | ------ | ----------- | :----: |
 | 1 | **Define your upgrade flow** | Confirm which component will be upgraded first — typically `SUSE Rancher Prime Manager`, unless compatibility exceptions apply. | ✅ |
 | 2 | **Set your upgrade path** | Identify your current and target `SUSE Rancher Prime Manager` versions. Ensure you’re not skipping minor versions and that both source and target versions are stable (non-pre-release). | ✅ |
 | 3 | **Verify compatibility** | Check that the version of `SUSE Rancher Prime Manager` you’re upgrading to is compatible with your Kubernetes cluster and other components version. | ✅ |
