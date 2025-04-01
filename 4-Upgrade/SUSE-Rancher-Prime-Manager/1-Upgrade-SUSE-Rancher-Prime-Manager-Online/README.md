@@ -77,7 +77,7 @@ So, now that you’ve got the foundation in place, where do you go from here? Le
 
 > What Component Should Be Upgraded First?
 
-One of the first things to consider is which components in your environment need to be upgraded, and in what order — a common question, and an important one. In SUSE Rancher Prime environments, the upgrade should always begin with the management plane, which means starting with the SUSE Rancher Prime Manager. Once that upgrade is complete and validated, you can shift your focus to the data plane — your Kubernetes clusters — whether those are RKE2, K3s, cloud services like EKS, AKS, GKE, or even vanilla Kubernetes. This sequence helps you avoid disruption and ensures a stable, well-orchestrated upgrade.
+One of the first things to consider is which components in your environment need to be upgraded, and in what order — a common question, and an important one. In `SUSE Rancher Prime` environments, the upgrade should always begin with the management plane, which means starting with the `SUSE Rancher Prime Manager`. Once that upgrade is complete and validated, you can shift your focus to the data plane — your Kubernetes clusters — whether those are `RKE2`, `K3s`, cloud services like EKS, AKS, GKE, or even vanilla Kubernetes. This sequence helps you avoid disruption and ensures a stable, well-orchestrated upgrade.
 
 > What Should My Upgrade Path Look Like?
 
