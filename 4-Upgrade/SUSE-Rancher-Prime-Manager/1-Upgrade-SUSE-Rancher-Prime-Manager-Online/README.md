@@ -43,6 +43,28 @@ If you’re running `SUSE Rancher Prime Manager` in an environment with internet
 
 ---
 
+## SUSE Rancher Prime Manager Upgrade Guide – Understanding What Happens Under the Hood
+
+Before we get into planning your upgrade, it’s helpful to take a step back and understand what actually happens during a SUSE Rancher Prime Manager upgrade. Knowing what’s going on behind the scenes will make the rest of this guide easier to follow — and give you more confidence as you move forward.
+
+SUSE Rancher Prime Manager is deployed using Helm — and upgrading it follows that same approach. Helm is the official and standard method for upgrading Rancher, as it allows for clean version management, customization through values, and full control over lifecycle operations.
+
+But what really happens when you run an upgrade?
+
+When you execute a helm upgrade, Helm itself doesn’t directly restart containers or force a shutdown. Instead, it updates the underlying Kubernetes resources, such as the Rancher Deployment, by changing configurations like the container image version.
+
+Once Helm applies the new configuration, Kubernetes takes care of the rest using a built-in strategy called RollingUpdate. This means the upgrade happens gradually — not all at once. Here’s what that looks like under the hood:
+	•	A new pod running the updated Rancher version is spun up
+	•	Kubernetes waits for that pod to become healthy and ready
+	•	One old pod is then safely terminated
+	•	This continues one pod at a time until the upgrade is complete
+
+This behavior is designed to ensure minimal downtime, keep Rancher highly available, and allow the platform to continue functioning during the upgrade process — though some downtime may still occur, depending on your specific setup, resource availability, or unexpected issues that arise along the way.
+
+Now that you know what’s going on beneath the surface, it’s time to start preparing your upgrade path — the most important step before making any changes.
+
+---
+
 ## SUSE Rancher Prime Manager Upgrade Guide - Preparing For The Upgrade
 
 Getting ready to upgrade your `SUSE Rancher Prime Manager` is more than just a technical step — it’s a moment to pause, align your thoughts, and make sure everything is set up for success. Think of it like preparing for a journey: the more you plan ahead, the smoother the road will be. And don’t worry — you don’t need to overthink it. With the right questions in mind and a few smart checks in place, you’ll be on track for a clean and confident upgrade.
