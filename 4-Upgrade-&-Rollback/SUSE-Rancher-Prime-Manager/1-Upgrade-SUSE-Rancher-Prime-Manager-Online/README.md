@@ -213,6 +213,22 @@ Rolling back a `SUSE Rancher Prime Manager` upgrade involves more than just reve
 
 ## SUSE Rancher Prime Manager Upgrade Guide - Check List Summary
 
+By now, you’ve gone through all the key considerations that go into planning a smooth, confident upgrade of your `SUSE Rancher Prime Manager`. This section brings it all together in one place — a practical checklist you can use to validate your readiness before moving forward.
+
+Each item here reflects a critical step in the planning process. Going through this list before you begin ensures you’ve covered all bases and are fully prepared to move into the upgrade phase.
+
+| ID | Checks | Description | Status |
+| -- | ------ | ----------- | ------ |
+| 1 | **Define your upgrade flow** | Confirm which component will be upgraded first — typically `SUSE Rancher Prime Manager`, unless compatibility exceptions apply. | ✅ |
+| 2 | **Set your upgrade path** | Identify your current and target `SUSE Rancher Prime Manager` versions. Ensure you’re not skipping minor versions and that both source and target versions are stable (non-pre-release). | ✅ |
+| 3 | **Verify compatibility** | Check that the version of `SUSE Rancher Prime Manager` you’re upgrading to is compatible with your Kubernetes cluster and other components version. | ✅ |
+| 4 | **Ensure access and tooling** | Make sure you have access to the management cluster, the correct kubeconfig file, and the required CLI tools (kubectl and helm v3) installed and configured. | ✅ |
+| 5 | **Check cert-manager** | If you’re using self-signed certs or Let’s Encrypt, verify that your cert-manager version is compatible with `SUSE Rancher Prime Manager` (cert-manager.io/v1, tested with v1.13.1). | ✅ |
+| 6 | **Validate proxy settings** | If your environment uses a proxy, confirm proxy configuration is in place on all nodes in the management cluster — and in any managed clusters if they’ll also be upgraded. | ✅ |
+| 7 | **Confirm resource availability** | Ensure your management cluster has enough free CPU and memory, and that overall utilization stays below 70% during the upgrade. | ✅ |
+| 8 | **Review known issues** | Go through the release notes for your target `SUSE Rancher Prime Manager` version and make note of any known issues that may apply to your setup. | ✅ |
+| 9 | **Take a backup** | Use the `SUSE Rancher Prime` Backup Operator to take a full, verified backup of the `SUSE Rancher Prime Manager` deployment before starting the upgrade. | ✅ |
+| 10 | **Prepare your rollback plan** | Have a clear, tested rollback strategy in place in case something goes wrong during or after the upgrade. | ✅ |
 
 ---
 
