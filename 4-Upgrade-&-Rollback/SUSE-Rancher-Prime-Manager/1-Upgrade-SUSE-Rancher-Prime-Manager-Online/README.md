@@ -149,6 +149,18 @@ While this repository is not focused on the upgrade of **cert-manager**, you can
 
 Taking a few minutes now to verify your **cert-manager** setup — or confirm that it isn’t needed — can save you hours of troubleshooting later.
 
+> Is My Environment Behind a Proxy — and Is It Configured Correctly?
+
+If your `SUSE Rancher Prime Manager` is deployed in an environment that accesses the internet through a proxy, it’s essential to make sure the proxy settings are configured correctly on each node of the management cluster — typically three nodes in a high-availability setup.
+
+These settings are necessary to ensure that the underlying Kubernetes cluster (whether `RKE2` or `K3S`) has internet access to pull required container images and components during the upgrade of `SUSE Rancher Prime Manager`. Without proper proxy configuration, the upgrade may fail due to missing packages or unreachable endpoints.
+
+Now, if you’re also planning to upgrade one or more managed Kubernetes clusters — whether it’s the management cluster itself or any downstream cluster — and you’re initiating those upgrades from the `SUSE Rancher Prime Manager` UI, then there’s an additional requirement - The ` SUSE Rancher Prime Manager` itself must also have working internet access, and therefore must have its proxy settings configured properly. 
+
+While this repository does not cover how to configure proxy settings in `RKE2`, `K3S` or in the `SUSE Rancher Prime Manager`, you can refer to the official [SUSE documentation - Installing SUSE® Rancher Prime behind an HTTP Proxy](https://documentation.suse.com/cloudnative/rancher-manager/latest/en/installation-and-upgrade/other-installation-methods/http-proxy/http-proxy.html) for detailed steps
+
+Making sure proxy configurations are set up correctly ahead of time will save you time, prevent upgrade failures, and ensure a smooth experience across your environment.
+
 > **Do I Have Enough Resources to Run This Upgrade Smoothly?**
 
 While upgrading `SUSE Rancher Prime Manager` usually doesn’t introduce new hardware demands or spike resource consumption, it’s still important to take a moment and check your cluster’s resource health before diving in.
@@ -160,6 +172,16 @@ Specifically, you’ll want to ensure that:
 - The overall cluster resource utilization remains below 70%, both before and during the upgrade process. This helps you avoid issues related to resource contention or performance degradation.
 
 By doing a quick resource health check ahead of time, you’re giving yourself extra confidence that the upgrade will proceed smoothly — without unexpected slowdowns, crashes, or deployment failures due to lack of available resources. For more information about `SUSE Rancher Prime Manager` hardware and resource requirements, refer to the official [SUSE documentation - SUSE Rancher Prime – Hardware Requirements](https://documentation.suse.com/cloudnative/rancher-manager/latest/en/installation-and-upgrade/requirements/requirements.html#_hardware_requirements)
+
+> Have I Reviewed the Known Issues for My Target Rancher Version?
+
+Before moving forward with your upgrade, it’s a smart idea to take a moment and check the known issues associated with the version of SUSE Rancher Prime Manager you’re planning to upgrade to.
+
+Every Rancher release comes with a set of release notes published on GitHub, and these often include a list of known bugs, limitations, and behaviors that may impact your environment. Reviewing these ahead of time gives you a clearer picture of what to expect — and helps you avoid surprises that could delay your upgrade or cause post-upgrade headaches.
+
+You can find all release notes — including known issues — in the [official SUSE Rancher GitHub repository](https://github.com/rancher/rancher/releases)
+
+Taking a few minutes to read through these notes now can help you save hours of troubleshooting later — and ensures you go into the upgrade fully informed and prepared.
 
 > **Is My Backup Ready?**
 
@@ -184,8 +206,6 @@ Rolling back a `SUSE Rancher Prime Manager` upgrade involves more than just reve
 
 --- 
 
-proxy settings
-review known issues
 
 
 ---
