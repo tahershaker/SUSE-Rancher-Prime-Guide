@@ -45,6 +45,7 @@ If you’re running `SUSE Rancher Prime Manager` in an environment with internet
 
 |The first two sections provide a detailed explanation of each consideration in the upgrade planning process, along with important notes and insights.
 If you’d prefer to skip ahead to the checklist summary and step-by-step upgrade guide, feel free to [jump there](#suse-rancher-prime-manager-upgrade-guide---check-list-summary).|
+| :--------- |
 
 ---
 
