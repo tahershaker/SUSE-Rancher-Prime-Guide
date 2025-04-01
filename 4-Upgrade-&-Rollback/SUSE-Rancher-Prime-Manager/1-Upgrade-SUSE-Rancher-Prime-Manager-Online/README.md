@@ -149,7 +149,7 @@ While this repository is not focused on the upgrade of **cert-manager**, you can
 
 Taking a few minutes now to verify your **cert-manager** setup — or confirm that it isn’t needed — can save you hours of troubleshooting later.
 
-> Is My Environment Behind a Proxy — and Is It Configured Correctly?
+> **Is My Environment Behind a Proxy — and Is It Configured Correctly?**
 
 If your `SUSE Rancher Prime Manager` is deployed in an environment that accesses the internet through a proxy, it’s essential to make sure the proxy settings are configured correctly on each node of the management cluster — typically three nodes in a high-availability setup.
 
@@ -173,7 +173,7 @@ Specifically, you’ll want to ensure that:
 
 By doing a quick resource health check ahead of time, you’re giving yourself extra confidence that the upgrade will proceed smoothly — without unexpected slowdowns, crashes, or deployment failures due to lack of available resources. For more information about `SUSE Rancher Prime Manager` hardware and resource requirements, refer to the official [SUSE documentation - SUSE Rancher Prime – Hardware Requirements](https://documentation.suse.com/cloudnative/rancher-manager/latest/en/installation-and-upgrade/requirements/requirements.html#_hardware_requirements)
 
-> Have I Reviewed the Known Issues for My Target Rancher Version?
+> **Have I Reviewed the Known Issues for My Target Rancher Version?**
 
 Before moving forward with your upgrade, it’s a smart idea to take a moment and check the known issues associated with the version of SUSE Rancher Prime Manager you’re planning to upgrade to.
 
