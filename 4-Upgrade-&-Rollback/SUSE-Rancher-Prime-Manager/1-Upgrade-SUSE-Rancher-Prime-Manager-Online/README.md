@@ -43,6 +43,11 @@ If you’re running `SUSE Rancher Prime Manager` in an environment with internet
 
 ---
 
+|The first two sections provide a detailed explanation of each consideration in the upgrade planning process, along with important notes and insights.
+If you’d prefer to skip ahead to the checklist summary and step-by-step upgrade guide, feel free to [jump there](#suse-rancher-prime-manager-upgrade-guide---check-list-summary).|
+
+---
+
 ## SUSE Rancher Prime Manager Upgrade Guide – Understanding What Happens Under the Hood
 
 Before we get into planning your upgrade, it’s helpful to take a step back and understand what actually happens during a `SUSE Rancher Prime Manager` upgrade. Knowing what’s going on behind the scenes will make the rest of this guide easier to follow — and give you more confidence as you move forward.
@@ -206,6 +211,7 @@ Rolling back a `SUSE Rancher Prime Manager` upgrade involves more than just reve
 
 --- 
 
+## SUSE Rancher Prime Manager Upgrade Guide - Check List Summary
 
 
 ---
