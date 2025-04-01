@@ -90,6 +90,11 @@ Next comes **version planning**. You’ll want to decide exactly which version y
 
 First, **don’t skip minor versions**. It might sound like a time-saver to go directly from v2.9.x to v2.11.x, but that approach isn’t recommended — and in most cases, may cause issues. Instead, you’ll want to take the path in stages (ex: v2.9.x → v2.10.x → v2.11.x). This ensures each version has the chance to apply its changes and keeps your upgrade path fully supported.
 
+It’s also highly recommended to upgrade to the latest minor release within your current major version before moving to the next major release. And when you do move to the next major release, upgrade to its latest minor version as well. For example, if you’re currently on v2.8.6 and planning to upgrade to v2.10.1, your ideal upgrade path would look like this:
+- v2.8.6 → v2.8.13 (latest in the 2.8.x series)
+- v2.8.13 → v2.9.7 (latest in 2.9.x)
+- v2.9.7 → v2.10.1 (your target version)
+
 Second, always **avoid upgrading to or from pre-release or non-stable versions**. These pre-releases are intended for testing purposes, not production workloads. You can usually spot them by the -rc (release candidate) or -alpha tag in the version name. In contrast, a stable production-ready version would be something like `v2.10.0`. For example:
 - v2.10.0-rc4 is a pre-release — [check it here](https://github.com/rancher/rancher/releases/tag/v2.10.0-rc4)
 - v2.10.0-alpha12 is also a pre-release — [check it here](https://github.com/rancher/rancher/releases/tag/v2.10.0-alpha12)
@@ -217,7 +222,7 @@ By now, you’ve gone through all the key considerations that go into planning a
 
 Each item here reflects a critical step in the planning process. Going through this list before you begin ensures you’ve covered all bases and are fully prepared to move into the upgrade phase.
 
-| ID | Checks             | Description | Status |
+| ID | Checks | Description | Status |
 | :--: | ------ | ----------- | :----: |
 | 1 | **Define your upgrade flow** | Confirm which component will be upgraded first — typically `SUSE Rancher Prime Manager`, unless compatibility exceptions apply. | ✅ |
 | 2 | **Set your upgrade path** | Identify your current and target `SUSE Rancher Prime Manager` versions. Ensure you’re not skipping minor versions and that both source and target versions are stable (non-pre-release). | ✅ |
@@ -229,6 +234,38 @@ Each item here reflects a critical step in the planning process. Going through t
 | 8 | **Review known issues** | Go through the release notes for your target `SUSE Rancher Prime Manager` version and make note of any known issues that may apply to your setup. | ✅ |
 | 9 | **Take a backup** | Use the `SUSE Rancher Prime` Backup Operator to take a full, verified backup of the `SUSE Rancher Prime Manager` deployment before starting the upgrade. | ✅ |
 | 10 | **Prepare your rollback plan** | Have a clear, tested rollback strategy in place in case something goes wrong during or after the upgrade. | ✅ |
+
+Now that we’ve walked through the full upgrade planning checklist, it’s time to take a closer look at the first three — and arguably most critical — steps: deciding what to upgrade first, defining the correct upgrade path, and ensuring version compatibility between `SUSE Rancher Prime Manager` and Kubernetes. These decisions form the foundation of a successful upgrade, and getting them right can make all the difference.
+
+To make this crystal clear, we’re going to walk through a real-world example that shows exactly how to approach these three key points in a practical, step-by-step way. Whether you’re upgrading `SUSE Rancher Prime Manager`, your Kubernetes clusters, or both, this example will help you understand the logic and reasoning behind each move — so you can plan your own upgrade path with confidence.
+
+Here’s a real-world scenario:
+
+> **Goal:** Upgrade `SUSE Rancher Prime Manager` from v2.7.6 to v2.10.2, and the current Kubernetes clusters `RKE2` version is v1.26.8.
+
+At first glance, this might seem simple. But if you try to leap directly to your target versions without validating compatibility or following the proper order, you’ll quickly run into roadblocks — or worse, break something in production.
+
+For example, if you check the [SUSE Support Matrix](https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/rancher-v2-10-2/), you’ll see that `SUSE Rancher Prime Manager` v2.10.2 does not support `RKE2` v1.26.8. That means you’ll also need to upgrade RKE2 as part of this process — and plan carefully around which versions are compatible with which.
+
+Let’s break it down step by step:
+- You’re starting with `Rancher` v2.7.6. At the time of writing, the latest patch version in the 2.7.x line is v2.7.18, which still supports `RKE2` v1.26.8. So, the first step is safe: → Upgrade `Rancher` from v2.7.6 → v2.7.18
+- Next, you move to v2.8.x. The latest minor release is v2.8.13, and it still supports `RKE2` v1.26.8, so you’re good to go: → Upgrade `Rancher` from v2.7.18 → v2.8.13
+- Next, you move to v2.9.x. The latest minor release is v2.9.7, but here’s the catch: it requires at least `RKE2` v1.27.x — so before upgrading `Rancher` again, you’ll need to upgrade the Kubernetes layer first. Additionally, `Rancher` v2.8.13 supports `RKE2` up to v1.28.x, so you’ll want to bring your Kubernetes version to at least v1.28 while still on `Rancher` v2.8.13.
+
+By now, you’ve got the idea — from this point on, simply continue following the same upgrade path and logic: validate version compatibility, move one step at a time, and make sure each upgrade is supported before progressing to the next.
+
+Below is the complete upgrade path and set of actions required to move from `SUSE Rancher Prime Manager` v2.7.6 to v2.10.2, along with the corresponding Kubernetes `RKE2` version upgrades.
+
+- Upgrade `SUSE Rancher Prime Manager` from 2.7.6 to 2.7.18
+- Upgrade `SUSE Rancher Prime Manager` from 2.7.18 to 2.8.12
+- Upgrade `RKE2` from 1.26.6 to 1.26.15
+- Upgrade `RKE2` from 1.26.15 to 1.27.16
+- Upgrade `RKE2` from 1.27.16 to 1.28.15
+- Upgrade `SUSE Rancher Prime Manager` from 2.8.12 to 2.9.6
+- Upgrade `SUSE Rancher Prime Manager` from 2.9.6 to 2.10.2
+- Upgrade `RKE2` from 1.28.15 to 1.29.13
+- Upgrade `RKE2` from 1.29.13 to 1.30.9
+- Upgrade `RKE2` from 1.30.9 to 1.31.5
 
 ---
 
