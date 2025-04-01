@@ -110,6 +110,8 @@ And here’s why this matters so much: **compatibility can reshape your upgrade 
 
 Imagine you’re running `RKE2` v1.27 with `SUSE Rancher Prime` v2.9.7, and you’re aiming for v2.10.2. If v2.10.2 doesn’t support `RKE2` v1.27, you can’t upgrade `SUSE Rancher Prime` right away. Instead, you’ll need to upgrade `RKE2` first — but to a version that’s supported by both v2.9.7 and v2.10.2, such as v1.29. Only then can you safely move forward with the `SUSE Rancher Prime Manager` upgrade.
 
+Also, don’t forget to check operating system compatibility. The OS version running on your management and Kubernetes nodes needs to be supported by the Rancher and Kubernetes versions you’re upgrading to — this can be a hidden blocker if overlooked.
+
 So yes, checking compatibility might seem like a small step — but it can completely reshape your plan. The key is to build your upgrade path around what’s supported, not just what’s typical.
 
 For the full picture, make sure to consult the official [SUSE Support Matrix](https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/rancher-v2-10-2/) — it’s the definitive source for what works with what.
@@ -226,7 +228,7 @@ Each item here reflects a critical step in the planning process. Going through t
 | :--: | ------ | ----------- | :----: |
 | 1 | **Define your upgrade flow** | Confirm which component will be upgraded first — typically `SUSE Rancher Prime Manager`, unless compatibility exceptions apply. | ✅ |
 | 2 | **Set your upgrade path** | Identify your current and target `SUSE Rancher Prime Manager` versions. Ensure you’re not skipping minor versions and that both source and target versions are stable (non-pre-release). | ✅ |
-| 3 | **Verify compatibility** | Check that the version of `SUSE Rancher Prime Manager` you’re upgrading to is compatible with your Kubernetes cluster and other components version. | ✅ |
+| 3 | **Verify compatibility** | Check that the version of `SUSE Rancher Prime Manager` you’re upgrading to is compatible with your Kubernetes cluster and OS version. | ✅ |
 | 4 | **Ensure access and tooling** | Make sure you have access to the management cluster, the correct kubeconfig file, and the required CLI tools (kubectl and helm v3) installed and configured. | ✅ |
 | 5 | **Check cert-manager** | If you’re using self-signed certs or Let’s Encrypt, verify that your cert-manager version is compatible with `SUSE Rancher Prime Manager` (cert-manager.io/v1, tested with v1.13.1). | ✅ |
 | 6 | **Validate proxy settings** | If your environment uses a proxy, confirm proxy configuration is in place on all nodes in the management cluster — and in any managed clusters if they’ll also be upgraded. | ✅ |
@@ -266,6 +268,10 @@ Below is the complete upgrade path and set of actions required to move from `SUS
 - Upgrade `RKE2` from 1.28.15 to 1.29.13
 - Upgrade `RKE2` from 1.29.13 to 1.30.9
 - Upgrade `RKE2` from 1.30.9 to 1.31.5
+
+---
+
+## SUSE Rancher Prime Manager Upgrade Guide - Step-By-Step Guide
 
 ---
 
