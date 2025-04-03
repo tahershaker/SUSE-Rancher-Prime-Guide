@@ -350,11 +350,11 @@ To initiate the backup, log in to the SUSE Rancher Prime Manager UI. From the ma
 
 ---
 
-n the Create Backup wizard, start by giving your backup a name — in our case, we used bk-before-upgrade-v2-9-2. You can also add a description to help identify the backup later; for example, we entered: “This is a one-time backup created before upgrading from v2.9.2 to v2.9.8.”
+In the Create Backup wizard, start by giving your backup a name — in our case, we used bk-before-upgrade-v2-9-2. You can also add a description to help identify the backup later; for example, we entered: “This is a one-time backup created before upgrading from v2.9.2 to v2.9.8.”
 - Under the Schedule section, select One-Time Backup.
 - For Encryption, choose Unencrypted (or switch to Encrypted if you prefer added security).
 - In the Storage Location section, select Use the default.
-Once everything is filled out, click Create to launch the backup process.
+- click Create to launch the backup process.
 
 ---
 
