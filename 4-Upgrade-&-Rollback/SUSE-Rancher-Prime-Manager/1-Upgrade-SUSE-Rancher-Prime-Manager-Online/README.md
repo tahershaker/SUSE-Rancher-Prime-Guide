@@ -273,11 +273,115 @@ Below is the complete upgrade path and set of actions required to move from `SUS
 
 ## SUSE Rancher Prime Manager Upgrade Guide - Step-By-Step Guide
 
+In this step-by-step guide, we’ll walk through the process of upgrading a SUSE Rancher Prime Manager instance deployed in a demo environment. For this example, Rancher is running on a single-node RKE2 management cluster — which is acceptable for demo or test purposes. However, for production environments, a three-node high-availability (HA) cluster is strongly recommended — in fact, it’s considered a best practice.
+
+The current Rancher version in this environment is v2.9.2, and our goal is to upgrade to the latest available version at the time of writing, which is v2.10.4.
+
+Here’s an overview of the demo environment setup:
+- Management Cluster Node Count: 1
+- Kubernetes Distribution & Version: RKE2 v1.30.6
+- Node Operating System: SLES 15 SP5
+- Current SUSE Rancher Version: v2.9.2
+- Target SUSE Rancher Version: v2.10.4
+- SUSE Rancher Backup Operator Deployed: Yes
+- SUSE Rancher Backup Storage Location: AWS S3 Bucket
+
+Below is a screenshot of the SUSE Rancher Prime Manager UI, showing the current version in use.
+
+---
+
+<p align="center">
+    <img src="Images/Check-1.png">
+</p>
+
+---
+
+Below is a screenshot of an SSH session connected to the single-node management cluster, displaying key environment details — including the number of nodes in the cluster (1), the RKE2 version, and the underlying OS distribution and version.
+
+---
+
+<p align="center">
+    <img src="Images/Check-2.png">
+</p>
+
+---
+
+Below is a screenshot of the SUSE Rancher Prime Manager UI, confirming that the Backup Operator is installed. It also shows that three successful backups have already been created, and that the configured storage destination is an S3 bucket.
+
+---
+
+<p align="center">
+    <img src="Images/Check-3.png">
+</p>
+
+---
+
+Let’s move on to the upgrade path planning. In our case, we’re currently running SUSE Rancher Prime Manager version v2.9.2, and we’re targeting an upgrade to v2.10.4. The management cluster is running on RKE2 v1.30.6, which is fully supported by both the current and target Rancher versions — so there’s no need to upgrade RKE2 as part of this process. If you’d like, you can always upgrade RKE2 later, once Rancher has been successfully updated.
+
+The operating system in use is SLES 15 SP5, which is also supported by both versions of SUSE Rancher Prime Manager, so again — no action needed on the OS side.
+
+We’re also starting from a stable release, not a pre-release or release candidate, which means there’s no cleanup or extra step required before initiating the upgrade.
+
+So with all of that aligned — supported Kubernetes version, supported OS, and a stable starting point — the upgrade path is pretty straightforward:
+You’ll move from v2.9.2 to v2.9.8 (the latest available patch in the 2.9.x series), and then from v2.9.8 to your target version, v2.10.4.
+
+As always, it’s a good idea to double-check compatibility using the official [SUSE Rancher Support Matrix](https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/rancher-v2-10-4/) before you begin.
+
+Now that the upgrade path is defined, let’s quickly run through the remaining items in the checklist to make sure everything else is ready to go.
+- We’ve got access and tooling covered — we can SSH into the single-node management cluster, kubectl is installed and configured, and Helm v3 is set up correctly and pointing to the right kubeconfig file. Everything needed to interact with the cluster is in place.
+- Next up is cert-manager. The version currently deployed is v1.13.0, which is fully supported and aligns with the version of Rancher we’re upgrading to — so no issues there.
+- As for proxy settings, this environment doesn’t use a proxy, so there’s nothing to configure or validate in that area.
+- On the resource availability side, we’ve checked the node metrics and confirmed that CPU usage is hovering around 40%, and RAM utilization is at 35%. That puts us well below the 70% threshold we recommend staying under during upgrades.
+- We’ve also taken time to review the known issues for the target Rancher version in the release notes — no red flags there.
+- When it comes to backups, we’ll walk through the backup process as part of the step-by-step guide that follows, so you’ll see exactly how to handle that.
+- And finally, a rollback plan has already been considered and prepared in case anything unexpected comes up during the upgrade.
+
+With everything checked off, we’re now fully ready to move into the actual upgrade process. Let’s do it! 🚀
+
+> Take A Backup For The Current SUSE Rancher Manager
+
+To initiate the backup, log in to the SUSE Rancher Prime Manager UI. From the main dashboard, select the local cluster — which represents the management cluster — from the list of available clusters on the right-hand side. Once inside the cluster view, go to the Backups section, then click on Create to start a new backup.
+
+---
+
+<p align="center">
+    <img src="Images/Step-1.png">
+</p>
+
+---
+
+n the Create Backup wizard, start by giving your backup a name — in our case, we used bk-before-upgrade-v2-9-2. You can also add a description to help identify the backup later; for example, we entered: “This is a one-time backup created before upgrading from v2.9.2 to v2.9.8.”
+- Under the Schedule section, select One-Time Backup.
+- For Encryption, choose Unencrypted (or switch to Encrypted if you prefer added security).
+- In the Storage Location section, select Use the default.
+Once everything is filled out, click Create to launch the backup process.
+
+---
+
+<p align="center">
+    <img src="Images/Step-2.png">
+</p>
+
+---
+
+Once the backup is complete, it will appear in the list of backups with its state marked as Completed, confirming that the backup was created successfully.
+
+---
+
+<p align="center">
+    <img src="Images/Step-3.png">
+</p>
+
+---
+
+> Upgrade SUSE Rancher Manager
+
+
 ---
 
 ## References
 
-- [SUSE Rancher Prime Support Matrix Link](https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/rancher-v2-10-2/)
+- [SUSE Rancher Prime Support Matrix Link](https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/rancher-v2-10-4/)
 - [SUSE Rancher Prime Upgrade Check List](https://www.suse.com/support/kb/doc/?id=000020061)
 - [SUSE Rancher Prime Documentation - Upgrade](https://documentation.suse.com/cloudnative/rancher-manager/latest/en/installation-and-upgrade/upgrades.html)
 - [SUSE Rancher Prime Documentation - Rollback](https://documentation.suse.com/cloudnative/rancher-manager/latest/en/installation-and-upgrade/rollbacks.html)
