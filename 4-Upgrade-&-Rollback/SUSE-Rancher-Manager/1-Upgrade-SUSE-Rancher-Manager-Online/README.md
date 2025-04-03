@@ -216,6 +216,21 @@ Hopefully, you’ll never need it. A well-prepared upgrade rarely goes sideways.
 
 Rolling back a `SUSE Rancher Manager` upgrade involves more than just reverting the version — it typically includes cleanup steps, verification, and ensuring everything is brought back to a stable state. While this repository doesn’t focus on the rollback process in detail, you can refer to the official [SUSE documentation - Rollback](https://documentation.suse.com/cloudnative/rancher-manager/latest/en/installation-and-upgrade/rollbacks.html) or follow along with another guide in this series: [Rollback SUSE Rancher Manager](/4-Upgrade-&-Rollback/SUSE-Rancher-Manager/3-Rolback-SUSE-Rancher-Manager/)
 
+> Important Recommendations
+
+When you’re working through a multi-step upgrade path — for example, upgrading from v2.9.5 to v2.9.8, and then to v2.10.4 — it’s highly recommended to allow sufficient time between each upgrade phase. On average, giving yourself 3 to 6 hours between steps provides enough room to validate the environment and ensure everything is running smoothly before moving forward.
+
+After executing each helm upgrade command, monitor the upgrade progress using the appropriate commands to check the status of the Rancher deployment. Once the pods are up and stable, log in to the `SUSE Rancher Manager` UI to confirm everything is functioning as expected.
+
+Take a few minutes to validate access and verify that all managed downstream clusters are visible and healthy. Perform some day-to-day tasks such as creating a project or namespace, checking deployments, or browsing workloads — this helps confirm that your Rancher environment is behaving as expected before moving on to the next step.
+
+```bash
+kubectl -n cattle-system rollout status deploy/rancher
+kubectl -n cattle-system get deployments
+kubectl -n cattle-system get pod
+kubectl -n cattle-system describe pod <pod-name>
+```
+
 --- 
 
 ## SUSE Rancher Manager Upgrade Guide - Check List Summary
@@ -431,6 +446,11 @@ helm upgrade rancher rancher-prime/rancher \
 
 Next, verify that the `SUSE Rancher Manager` is deploying correctly by running the commands below. Ensure there are no errors, and that the new `Rancher` pods are up and running with a Ready status. Once everything looks good, log in to the `SUSE Rancher Manager` UI to confirm it’s accessible and check that the version displayed has been updated to v2.9.8.
 
+```bash
+kubectl -n cattle-system rollout status deploy/rancher
+kubectl -n cattle-system get deployments
+kubectl -n cattle-system get pod
+```
 
 ---
 
