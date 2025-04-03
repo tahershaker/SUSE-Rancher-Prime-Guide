@@ -376,6 +376,87 @@ Once the backup is complete, it will appear in the list of backups with its stat
 
 > Upgrade SUSE Rancher Manager
 
+Since Helm v3 is the primary method for installing and upgrading SUSE Rancher Prime Manager (as mentioned earlier), the first step is to update your Helm repositories and verify that the rancher-prime repository is correctly listed. You can do that using the following commands:
+
+```bash
+helm repo update
+helm repo list
+```
+
+---
+
+<p align="center">
+    <img src="Images/Step-4.png">
+</p>
+
+---
+
+Once the Helm repo is updated, we now need to fetch the new SUSE Rancher Manager Helm chart for the new version and then get all the helm values that we have used while installing the current version of SUSE Rancher Manager to eidt the defualt configuration. for memory refresh, these values were passed with --set, from the current Rancher Helm chart that is installed. To do so, use the below commands
+
+```bash
+#You can also use the below command to confirm that the target version you are aiming for is available in the updated repo
+#helm search repo rancher-prime/rancher --versions
+helm fetch rancher-prime/rancher --version=2.9.8
+helm get values rancher -n cattle-system
+```
+
+---
+
+<p align="center">
+    <img src="Images/Step-5.png">
+</p>
+
+---
+
+Now it’s time to upgrade SUSE Rancher Prime Manager using the helm upgrade command, targeting the desired version — in this case, v2.9.8. You’ll need to include the values carried over from the existing deployment, which you retrieved in the previous step, by appending them to the command using the --set key=value format. You can use the example below as a reference:
+
+```bash
+helm upgrade rancher rancher-prime/rancher \
+  --namespace cattle-system \
+  --version 2.9.8 \
+  --set hostname=rancher.rancher-demo.com \
+  --set ingress.tls.source=letsEncrypt \
+  --set letsEncrypt.email=<email-used-for-lets-encrypt-certificate> \
+  --set bootstrapPassword=<bootstrap-password> \
+  --set replicas=1 
+```
+
+---
+
+<p align="center">
+    <img src="Images/Step-6.png">
+</p>
+
+---
+
+Next, verify that the SUSE Rancher Prime Manager is deploying correctly by running the commands below. Ensure there are no errors, and that the new Rancher pods are up and running with a Ready status. Once everything looks good, log in to the SUSE Rancher Prime Manager UI to confirm it’s accessible and check that the version displayed has been updated to v2.9.8.
+
+
+---
+
+<p align="center">
+    <img src="Images/Step-7.png">
+</p>
+
+---
+
+---
+
+<p align="center">
+    <img src="Images/Step-8.png">
+</p>
+
+---
+
+Now repeat the same steps to upgrade from SUSE Rancher Prime Manager v2.9.8 to v2.10.4. Once the upgrade is complete, your Rancher Manager should be fully updated, and you’ll be able to see the new version — v2.10.4 — reflected in the UI.
+
+---
+
+<p align="center">
+    <img src="Images/Step-9.png">
+</p>
+
+---
 
 ---
 
