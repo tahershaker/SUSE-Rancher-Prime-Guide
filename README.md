@@ -12,13 +12,9 @@ If you’re looking for a single source of truth to master `SUSE Rancher Prime` 
 
 ---
 
-> Disclaimer
-
-This repo is build be Taher Shaker how at the time works for SUSE as a solution architect. However, this is a personal efforts done by myself - Taher Shaker - and not an official SUSE documentation. Thus, SUSE is not responsible of any info shared in this repo and it is strongly advised to refer to the official documentation for reference. I will try to add as much references as possible and to be as acuate as possible. 
-
-It is also not advised to used the provided info in this repo for any production environment and reach for SUSE help is strongly advised in such scenario. The purpose of this repo to provide guidance for installing and configuring `SUSE Rancher` DevSecOps solution portfolio for demo, proof-of-concept, testing, and education purposes only.
-
-Thank you and i hope you enjoy it.
+> ⚠️ Disclaimer:
+> 
+> This is not an official `SUSE` document. While it is based on practical experience and best practices, it is strongly recommended to refer to the official `SUSE Rancher` documentation for the most accurate and up-to-date guidance: https://documentation.suse.com
 
 ---
 
