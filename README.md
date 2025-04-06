@@ -1,8 +1,8 @@
 # SUSE Rancher Prime Guide
 
-Welcome to the SUSE Rancher GitHub Guide Repo — your go-to resource for understanding, deploying, configuring, managing, and troubleshooting the SUSE Rancher Prime Suite portfolio. Whether you’re preparing a demo, running a proof-of-concept, testing features, or simply learning the stack, this repo is designed to walk you through everything, step by step. Inside, you’ll find high-level explanations and hands-on instructions covering all components of the SUSE Rancher Prime Suite. While this guide is primarily built for SUSE Solution Architects, it’s also a practical resource for Infrastructure, Cloud-Native, and DevOps teams managing the SUSE Rancher Prime solution in real-world environments. Each section is built to be clear, practical, and easy to follow — written with a friendly, conversational tone to make your experience as smooth as possible.
+Welcome to the `SUSE Rancher Prime` Suite Guide GitHub Repo — your go-to resource for understanding, deploying, configuring, managing, and troubleshooting the `SUSE Rancher Prime` Suite portfolio. Whether you’re preparing a demo, running a proof-of-concept, testing features, or simply learning the stack, this repo is designed to walk you through everything, step by step. Inside, you’ll find high-level explanations and hands-on instructions covering all components of the `SUSE Rancher Prime` Suite. While this guide is primarily built for `SUSE` Solution Architects, it’s also a practical resource for Infrastructure, Cloud-Native, and DevOps teams managing the `SUSE Rancher Prime` solution in real-world environments. Each section is built to be clear, practical, and easy to follow — written with a friendly, conversational tone to make your experience as smooth as possible.
 
-If you’re looking for a single source of truth to master SUSE Rancher Prime Suite stack, you’re in the right place.
+If you’re looking for a single source of truth to master `SUSE Rancher Prime` Suite stack, you’re in the right place.
 
 ---
 
