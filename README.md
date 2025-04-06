@@ -7,7 +7,7 @@ This repo is created to provide the reader all the required information on insta
 ---
 
 <p align="center">
-    <img src="Images/SUSE-Logo.png">
+    <img src="Images/Repo-PIC.png">
 </p>
 
 ---
