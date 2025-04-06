@@ -20,20 +20,24 @@ If you’re looking for a single source of truth to master `SUSE Rancher Prime` 
 
 ## About This Repo
 
-This repo is designed and created to provide a documented step-by-step guide and scripts for installing and configuring `SUSE Rancher` DevSecOps solution portfolio. The main purpose for this repo is to have a repository holding all the installation guides and steps along with scripts (if possible) for education and faster deployment and configuration of the solutions in question.
+This repository is built to be your easy, go-to guide when deploying, configuring, managing, or troubleshooting the `SUSE Rancher Prime` Suite stack. It’s designed to simplify your experience — whether you’re setting up a quick lab, running a customer demo, building a PoC, or working in a real-world environment.
 
-Please note: This repo is a working-progress and is continuously updated, thus, new resources will be added and existing resources will be edited/updated continuously
+Here, you’ll find documented step-by-step guides and supporting scripts (where available) that walk you through each stage of working with the `SUSE Rancher Prime` Suite stack. The goal is to save you time, reduce complexity, and give you confidence while working with these solutions.
 
----
+**What’s Covered:**
 
-## SUSE Solutions Included
+This repo covers the entire `SUSE Rancher Prime` Suite, which includes:
+- **SUSE Rancher**: Centralized management for Kubernetes clusters — regardless of where they run (on-prem, cloud, or edge). Rancher simplifies cluster operations, policy enforcement, and multi-tenant environments.
+- **SUSE Kubernetes (RKE & K3s)**: Two lightweight and production-grade Kubernetes distributions. RKE2 is fully CNCF-compliant and secure by default, while K3s is ideal for edge and small-footprint use cases.
+- **SUSE Storage (formerly Longhorn)**: A cloud-native distributed block storage solution for Kubernetes. It offers snapshots, backups, replication, and easy recovery — making it great for persistent workloads.
+- **SUSE Security (formerly NeuVector)**: A zero-trust, end-to-end container security platform. It provides runtime protection, vulnerability scanning, network segmentation, and compliance for Kubernetes environments.
+- **SUSE Observability (formerly StackState)**: Full-stack observability built for modern applications — enabling intelligent correlation, topology mapping, and faster root cause analysis across your infrastructure.
+- **SUSE Application Collection**: Pre-packaged Helm charts and curated apps to simplify Kubernetes adoption. These tools help users accelerate time-to-value when deploying workloads on SUSE Rancher.
+- **SUSE Private Registry**: A secure, self-hosted container image registry that supports air-gapped deployments and local image management for tighter control and compliance.
+- **SUSE Rancher Fleet (GitOps)**: GitOps-based continuous delivery and lifecycle management for Kubernetes at scale. Fleet enables version-controlled, repeatable deployments across clusters.
+- **SUSE Virtualization (formerly Harvester)**: A modern hyperconverged infrastructure (HCI) solution that combines VMs and containers on a single platform — fully integrated with Rancher.
 
-This repo concentrates on `SUSE Rancher` DevSecOps solution portfolio which includes the following solutions:
-- `SUSE Rancher RKE2`
-- `SUSE Rancher K3S`
-- `SUSE Rancher`
-- `SUSE Longhorn`
-- `SUSE NeuVector`
+> **Note:** This repository is a work in progress. New content will be added and existing material refined regularly, so check back often for updates.
 
 ---
 
@@ -62,14 +66,9 @@ This repo will provide high-level explanation, step-by-step-guides, and scripts 
 
 ---
 
-## References:
+## Official References:
 
-The below is the official documentation pages for the list of the solutions included in this repo.
-- [SUSE Rancher RKE2](https://docs.rke2.io/)
-- [SUSE Rancher K3S](https://docs.k3s.io/)
-- [SUSE Rancher](https://ranchermanager.docs.rancher.com/)
-- [SUSE Longhorn](https://longhorn.io/docs)
-- [SUSE NeuVector](https://open-docs.neuvector.com/)
+- [SUSE Official Documentation](https://documentation.suse.com)
 
 ---
 
