@@ -18,9 +18,9 @@ Welcome to the Learn About `SUSE® Rancher Prime` Suite Solutions repository —
 
 ## About This Repo
 
-This repository is dedicated to helping you understand the key components of the `SUSE Rancher Prime` Suite — not just how to use them, but why they exist, what problems they solve, and how they’re positioned in the modern cloud-native ecosystem.
+This repository is structured to help you gain a clear, high-level understanding of every solution in the `SUSE Rancher Prime` Suite Stack. Each section focuses on one solution and provides a guided overview of its key features, common use cases, typical architecture, and how it integrates with the rest of the stack.
 
-This is not a deep technical implementation guide — it’s your go-to reference to understand what each solution is, what value it brings, how it fits into the bigger picture, and when and why to use it. Once you’re familiar with the concepts here, you’ll be ready to dive into deployment, configuration, and advanced operations using the rest of the guide structure.
+You won’t find deep technical deployments here — this repo is all about understanding the solution before using it. It’s a great starting point for architects, pre-sales engineers, consultants, or anyone looking to explain, position, or confidently work with `SUSE Rancher Prime` Suite technologies. Once you’re familiar with the concepts here, you’ll be ready to dive into deployment, configuration, and advanced operations using the rest of the guide structure.
 
 Each section of this repo focuses on one solution in the suite and walks you through:
 - The core concepts and technical foundation
@@ -34,28 +34,29 @@ The purpose is to provide a solid mental model before getting hands-on. It’s e
 **What Is Covered**
 
 This repo covers every solution included in the `SUSE Rancher Prime` Suite, from core Kubernetes management to observability, security, and virtualization. Below is a quick overview of what each solution does and why it matters:
-- `SUSE Rancher Prime`: The heart of the Prime Suite — a centralized platform for managing multiple Kubernetes clusters across on-prem, cloud, and edge environments. It simplifies operations, governance, access control, and application delivery.
-- `SUSE Kubernetes Engines (RKE2 & K3s)`: Two lightweight, production-grade Kubernetes distributions. RKE2 is fully CNCF-compliant and secure by default, while K3s is ideal for edge and resource-constrained environments.
-- `SUSE Storage` (formerly Longhorn): A cloud-native, distributed block storage solution for Kubernetes. It enables persistent volumes with built-in snapshotting, backup, replication, and disaster recovery — all designed for containerized workloads.
-- `SUSE Security` (formerly NeuVector): A full-lifecycle Kubernetes security platform offering runtime protection, vulnerability scanning, zero-trust policies, and deep network visibility — built for highly regulated or security-conscious environments.
-- `SUSE Observability` (formerly StackState): A modern observability platform that correlates metrics, logs, traces, and topology into a unified view — helping teams detect, understand, and resolve issues faster.
-- `SUSE Application Collection`: A curated catalog of Helm charts and pre-validated apps that simplify Kubernetes adoption. It accelerates time-to-value by offering ready-to-deploy software tailored for enterprise environments.
-- `SUSE Private Registry` (based on Harbor): A secure, self-hosted container image registry for enterprise use. It supports air-gapped deployments, vulnerability scanning, and fine-grained access control for managing trusted container images.
-- `SUSE Rancher Prime Admission Policy Manager` (based on Kubewarden): A Kubernetes policy engine that enforces governance through policy-as-code. It enables you to secure your workloads by controlling what’s allowed to run in your clusters — with flexibility and transparency.
-- `SUSE Rancher Prime OS Manager` (formerly Elemental): A cloud-native operating system management stack built to manage the OS layer of Kubernetes nodes. It provisions and updates lightweight OS images (like SLE Micro) across bare-metal and edge environments.
-- `SUSE Rancher Prime ClusterAPI` (Turtles): A Rancher-native integration with the Cluster API (CAPI) project. It allows declarative lifecycle management of Kubernetes clusters across different infrastructures using GitOps-style workflows.
-- `SUSE Rancher Prime Fleet`: A GitOps-based continuous delivery and lifecycle management tool for Kubernetes. It helps manage applications and configurations across large fleets of clusters, with version control and automation built-in.
-- `SUSE Virtualization` (formerly Harvester): A hyperconverged infrastructure (HCI) solution that combines virtual machines and containers in a single platform — fully integrated with Rancher and ideal for modernizing legacy VM environments.
+- **SUSE Rancher Prime**: The heart of the Prime Suite — a centralized platform for managing multiple Kubernetes clusters across on-prem, cloud, and edge environments. It simplifies operations, governance, access control, and application delivery.
+- **SUSE Kubernetes Engines (RKE2 & K3s)**: Two lightweight, production-grade Kubernetes distributions. RKE2 is fully CNCF-compliant and secure by default, while K3s is ideal for edge and resource-constrained environments.
+- **SUSE Storage** (formerly Longhorn): A cloud-native, distributed block storage solution for Kubernetes. It enables persistent volumes with built-in snapshotting, backup, replication, and disaster recovery — all designed for containerized workloads.
+- **SUSE Security** (formerly NeuVector): A full-lifecycle Kubernetes security platform offering runtime protection, vulnerability scanning, zero-trust policies, and deep network visibility — built for highly regulated or security-conscious environments.
+- **SUSE Observability** (formerly StackState): A modern observability platform that correlates metrics, logs, traces, and topology into a unified view — helping teams detect, understand, and resolve issues faster.
+- **SUSE Application Collection**: A curated catalog of Helm charts and pre-validated apps that simplify Kubernetes adoption. It accelerates time-to-value by offering ready-to-deploy software tailored for enterprise environments.
+- **SUSE Private Registry** (based on Harbor): A secure, self-hosted container image registry for enterprise use. It supports air-gapped deployments, vulnerability scanning, and fine-grained access control for managing trusted container images.
+- **SUSE Rancher Prime Admission Policy Manager** (based on Kubewarden): A Kubernetes policy engine that enforces governance through policy-as-code. It enables you to secure your workloads by controlling what’s allowed to run in your clusters — with flexibility and transparency.
+- **SUSE Rancher Prime OS Manager** (formerly Elemental): A cloud-native operating system management stack built to manage the OS layer of Kubernetes nodes. It provisions and updates lightweight OS images (like SLE Micro) across bare-metal and edge environments.
+- **SUSE Rancher Prime ClusterAPI** (Turtles): A Rancher-native integration with the Cluster API (CAPI) project. It allows declarative lifecycle management of Kubernetes clusters across different infrastructures using GitOps-style workflows.
+- **SUSE Rancher Prime Fleet**: A GitOps-based continuous delivery and lifecycle management tool for Kubernetes. It helps manage applications and configurations across large fleets of clusters, with version control and automation built-in.
+- **SUSE Virtualization** (formerly Harvester): A hyperconverged infrastructure (HCI) solution that combines virtual machines and containers in a single platform — fully integrated with Rancher and ideal for modernizing legacy VM environments.
 
 ---
 
 ## What You’ll Find in This Repo
 
-This repository is structured to help you build a solid understanding of each solution in the `SUSE Rancher Prime` Suite — one at a time, in a clear and practical way. Each solution has its own dedicated section that walks you through the key concepts, common use cases, business value, feature highlights, and architecture.
+This repository is structured to help you build a solid understanding of each solution in the `SUSE Rancher Prime` Suite Stack — one at a time, in a clear and practical way. Each solution has its own dedicated section that walks you through the key concepts, common use cases, business value, feature highlights, and architecture.
 
 Whether you’re preparing for a customer discussion, designing a solution, or simply trying to connect the dots between the products in the suite, this is your go-to resource.
 
 **Content overview:**
+
 - [1- SUSE Rancher Prime](/01-Learn-About-SUSE-Solutions/01-SUSE-Rancher-Prime/)
 - [2- SUSE Rancher Kubernetes Engine - RKE2](/01-Learn-About-SUSE-Solutions/02-SUSE-Rancher-RKE2/)
 - [3- SUSE Rancher Kubernetes Engine - K3s](/01-Learn-About-SUSE-Solutions/03-SUSE-Rancher-K3S/)
