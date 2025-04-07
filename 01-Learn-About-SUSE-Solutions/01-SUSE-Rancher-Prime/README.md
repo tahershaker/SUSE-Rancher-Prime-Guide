@@ -14,6 +14,8 @@ In this guide, you’ll get a solid feel for what `SUSE Rancher Prime Manager` d
 
 > **Note:** Throughout this guide, we’ll refer to it simply as SUSE Rancher Prime — just to keep things short and easy. But to be clear, we’re talking about the management component of the suite (also known as SUSE Rancher Prime Manager).
 
+---
+
 > ⚠️ Disclaimer:
 > 
 > This is not an official `SUSE` document. While it is based on practical experience and best practices, it is strongly recommended to refer to the official `SUSE` documentation for the most accurate and up-to-date guidance: https://documentation.suse.com
