@@ -18,9 +18,11 @@ Welcome to the Learn About `SUSE® Rancher Prime` Suite Solutions repository —
 
 ## About This Repo
 
-This repository is structured to help you gain a clear, high-level understanding of every solution in the `SUSE Rancher Prime` Suite Stack. Each section focuses on one solution and provides a guided overview of its key features, common use cases, typical architecture, and how it integrates with the rest of the stack.
+This repository is created to provide a clear and structured understanding of each solution included in the `SUSE Rancher Prime` Suite Stack. It focuses on the foundational knowledge you need before moving into hands-on deployment, configuration, or advanced operations.
 
-You won’t find deep technical deployments here — this repo is all about understanding the solution before using it. It’s a great starting point for architects, pre-sales engineers, consultants, or anyone looking to explain, position, or confidently work with `SUSE Rancher Prime` Suite technologies. Once you’re familiar with the concepts here, you’ll be ready to dive into deployment, configuration, and advanced operations using the rest of the guide structure.
+Each section is designed to help you grasp the main concept, understand the key features, explore relevant use cases, and visualize the architecture of the solution. Where applicable, it also highlights how each component integrates with the rest of the suite — giving you a full-picture view of how the stack works together.
+
+You won’t find deep technical deployments here — this repo is all about understanding the solution before using it. It’s a great starting point for anyone looking to understand, learn, and confidently work with `SUSE Rancher Prime` Suite technologies. Once you’re familiar with the concepts here, you’ll be ready to dive into deployment, configuration, and advanced operations using the rest of the guide structure.
 
 Each section of this repo focuses on one solution in the suite and walks you through:
 - The core concepts and technical foundation
@@ -28,8 +30,6 @@ Each section of this repo focuses on one solution in the suite and walks you thr
 - The business value it delivers
 - A brief feature overview to show its capabilities at a glance
 - A high-level look at the architecture and how it works internally
-
-The purpose is to provide a solid mental model before getting hands-on. It’s especially useful for architects, consultants, and technical sellers who need to explain these solutions to others — but also great for practitioners who want to connect the “why” behind the tools they use every day.
 
 **What Is Covered**
 
@@ -52,8 +52,6 @@ This repo covers every solution included in the `SUSE Rancher Prime` Suite, from
 ## What You’ll Find in This Repo
 
 This repository is structured to help you build a solid understanding of each solution in the `SUSE Rancher Prime` Suite Stack — one at a time, in a clear and practical way. Each solution has its own dedicated section that walks you through the key concepts, common use cases, business value, feature highlights, and architecture.
-
-Whether you’re preparing for a customer discussion, designing a solution, or simply trying to connect the dots between the products in the suite, this is your go-to resource.
 
 **Content overview:**
 
