@@ -40,6 +40,8 @@ This repo covers every solution included in the `SUSE Rancher Prime` Suite, from
 - **SUSE Rancher Prime Fleet**: A GitOps-based continuous delivery and lifecycle management tool for Kubernetes. It helps manage applications and configurations across large fleets of clusters, with version control and automation built-in.
 - **SUSE Virtualization** (formerly Harvester): A hyperconverged infrastructure (HCI) solution that combines virtual machines and containers in a single platform — fully integrated with Rancher and ideal for modernizing legacy VM environments.
 
+> ⚠️ **Important:** This repo is not intended to replace official documentation or support channels. Before deploying Rancher Prime in a production environment, it is strongly recommended to consult with your `SUSE` account team or refer to the official documentation to ensure alignment with supported architectures and best practices.
+
 ---
 
 ## What You’ll Find in This Repo
