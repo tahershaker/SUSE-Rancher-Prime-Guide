@@ -1,4 +1,4 @@
-# Installing SUSE Rancher Prime
+# Deploying SUSE Rancher Prime
 
 This repository is your step-by-step guide to deploying `SUSE Rancher Prime` — whether you’re working in a connected environment or setting things up in a fully air-gapped infrastructure. It’s built to make the installation process simple, reliable, and repeatable across different deployment scenarios. While this guide is primarily crafted for `SUSE` Solution Architects, it’s equally valuable for Infrastructure, DevOps, and Cloud-Native teams who need to install and operate `SUSE Rancher Prime` in real-world environments.
 
