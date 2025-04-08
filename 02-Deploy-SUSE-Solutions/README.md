@@ -18,7 +18,7 @@ Welcome to the Deploy `SUSE® Rancher Prime` Suite Solutions repository — your
 
 ## About This Repo
 
-This repository is built to guide you through the practical deployment of every solution included in the `SUSE Rancher Prime` Suite Solution Stack. It assumes you already understand the purpose of each component and are now ready to take the next step: actually deploying them. If you don’t yet have the required background or would like to learn more about the solutions before deploying them, please refer to the [Learn About SUSE Solutions repository](/01-Learn-About-SUSE-Solutions/README.md) for a clear, high-level understanding.
+This repository is built to guide you through the practical deployment of every solution included in the `SUSE Rancher Prime` Suite Solution Stack. It assumes you already understand the purpose of each component and are now ready to take the next step: actually deploying them. If you don’t yet have the required background or would like to learn more about the solutions before deploying them, please refer to the [Learn About SUSE Solutions repository](/02-Deploy-SUSE-Solutions/README.md) for a clear, high-level understanding.
 
 Each section here is focused on one solution at a time, giving you clean, well-structured instructions for real-world environments — with support for both connected and air-gapped setups. Where applicable, you’ll also find automation scripts (if applicable), helpful notes, and deployment patterns that reflect `SUSE` best practices.
 
@@ -50,19 +50,19 @@ This repo is structured around the solutions in the `SUSE Rancher Prime` Suite S
 
 **Content overview:**
 
-- [1- SUSE Rancher Prime](/01-Learn-About-SUSE-Solutions/01-SUSE-Rancher-Prime/)
-- [2- SUSE Rancher Kubernetes Engine - RKE2](/01-Learn-About-SUSE-Solutions/02-SUSE-Rancher-RKE2/)
-- [3- SUSE Rancher Kubernetes Engine - K3s](/01-Learn-About-SUSE-Solutions/03-SUSE-Rancher-K3S/)
-- [4- SUSE Storage](/01-Learn-About-SUSE-Solutions/04-SUSE-Storage/)
-- [5- SUSE Security](/01-Learn-About-SUSE-Solutions/05-SUSE-Security/)
-- [6- SUSE Observability](/01-Learn-About-SUSE-Solutions/06-SUSE-Observability/)
-- [7- SUSE Application Collection](/01-Learn-About-SUSE-Solutions/07-SUSE-Application-Collection/)
-- [8- SUSE Private Registry](/01-Learn-About-SUSE-Solutions/08-SUSE-Private-Registry/)
-- [9- SUSE Rancher Prime - Admission Policy Manager](/01-Learn-About-SUSE-Solutions/09-SUSE-Rancher-Prime-Admission-Policy-Manager/)
-- [10- SUSE Rancher Prime OS Manager](/01-Learn-About-SUSE-Solutions/10-SUSE-Rancher-Prime-OS-Manager/)
-- [11- SUSE Rancher Prime ClusterAPI](/01-Learn-About-SUSE-Solutions/11-SUSE-Rancher-Prime-ClusterAPI/)
-- [12- SUSE Rancher Prime Fleet](/01-Learn-About-SUSE-Solutions/12-SUSE-Rancher-Prime-Fleet/)
-- [13- SUSE Virtualization](/01-Learn-About-SUSE-Solutions/13-SUSE-Virtualization/)
+- [1- SUSE Rancher Prime](/02-Deploy-SUSE-Solutions/01-SUSE-Rancher-Prime/README.md)
+- [2- SUSE Rancher Kubernetes Engine - RKE2](/02-Deploy-SUSE-Solutions/02-SUSE-Rancher-RKE2/README.md)
+- [3- SUSE Rancher Kubernetes Engine - K3s](/02-Deploy-SUSE-Solutions/03-SUSE-Rancher-K3S/README.md)
+- [4- SUSE Storage](/02-Deploy-SUSE-Solutions/04-SUSE-Storage/README.md)
+- [5- SUSE Security](/02-Deploy-SUSE-Solutions/05-SUSE-Security/README.md)
+- [6- SUSE Observability](/02-Deploy-SUSE-Solutions/06-SUSE-Observability/README.md)
+- [7- SUSE Application Collection](/02-Deploy-SUSE-Solutions/07-SUSE-Application-Collection/README.md)
+- [8- SUSE Private Registry](/02-Deploy-SUSE-Solutions/08-SUSE-Private-Registry/README.md)
+- [9- SUSE Rancher Prime - Admission Policy Manager](/02-Deploy-SUSE-Solutions/09-SUSE-Rancher-Prime-Admission-Policy-Manager/README.md)
+- [10- SUSE Rancher Prime OS Manager](/02-Deploy-SUSE-Solutions/10-SUSE-Rancher-Prime-OS-Manager/README.md)
+- [11- SUSE Rancher Prime ClusterAPI](/02-Deploy-SUSE-Solutions/11-SUSE-Rancher-Prime-ClusterAPI/README.md)
+- [12- SUSE Rancher Prime Fleet](/02-Deploy-SUSE-Solutions/12-SUSE-Rancher-Prime-Fleet/README.md)
+- [13- SUSE Virtualization](/02-Deploy-SUSE-Solutions/13-SUSE-Virtualization/README.md)
 
 ---
 
